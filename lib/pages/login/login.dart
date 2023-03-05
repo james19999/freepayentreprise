@@ -53,7 +53,7 @@ class _LoginState extends ConsumerState<Login> {
                       logocontainer(),
                       Text(
                         "Connectez vous à votre entreprise",
-                        style: StyleText,
+                        // style: StyleText,
                       ),
                       SizedBox(
                         height: Get.height * 0.022,

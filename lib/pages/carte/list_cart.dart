@@ -117,7 +117,7 @@ class _CarteListState extends ConsumerState<CarteList> {
                               padding: EdgeInsets.all(5.0),
                               child: Center(
                                 child: Text(
-                                  'Aucune résultat pour votre recherche',
+                                  'Aucun résultat pour votre recherche',
                                   style: TextStyle(
                                       fontSize: fontsizes,
                                       fontWeight: FontWeight.normal),

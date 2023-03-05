@@ -9,5 +9,7 @@ const gif = 'assets/images/flèche-arrow.gif';
 const s1 = 'assets/images/s1.jpg';
 const s2 = 'assets/images/s2.jpg';
 const s3 = 'assets/images/s3.jpg';
+const fr = 'assets/images/fr.png';
+const en = 'assets/images/en.png';
 
 const found = 'assets/images/found.png';

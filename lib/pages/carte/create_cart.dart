@@ -27,6 +27,12 @@ class _CreateCartState extends ConsumerState<CreateCart> {
   GlobalKey<FormState> _formk = GlobalKey<FormState>();
   TextEditingController _controlleramount = TextEditingController();
   TextEditingController _controllerclient = TextEditingController();
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _controllerclient.text = widget.name;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -117,16 +123,14 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                           // Text(widget.clientModel.name),
 
                           TextFormField(
+                            controller: _controllerclient,
                             onTap: () {
                               Get.to(() => ClientList());
                             },
                             onChanged: (value) {},
                             readOnly: true,
                             decoration: InputDecoration(
-                                helperText: "Sélectionnez un client",
-                                label: Text(widget.id.toString() == null
-                                    ? "Sélectionnez un client"
-                                    : widget.name.toString()),
+                                label: Text("Sélectionnez un client"),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -148,7 +152,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                             height: Get.height * 0.03,
                           ),
 
-                          Text(widget.name.toString())
+                          // Text(widget.name.toString())
                         ],
                       ))
                 ],

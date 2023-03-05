@@ -1,63 +1,53 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
-import 'package:freepayagency/pages/clients/add_client.dart';
-import 'package:freepayagency/pages/clients/client_card.dart';
 import 'package:freepayagency/pages/color/color.dart';
-import 'package:freepayagency/pages/controller/client_controller.dart';
+import 'package:freepayagency/pages/controller/category_controller.dart';
+import 'package:freepayagency/pages/controller/product_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
-import 'package:freepayagency/pages/models/client_model.dart';
-import 'package:freepayagency/pages/services/client_service.dart';
+import 'package:freepayagency/pages/ecommer/categorie/add_category.dart';
+import 'package:freepayagency/pages/ecommer/categorie/category_card.dart';
+import 'package:freepayagency/pages/ecommer/product/product_add.dart';
+import 'package:freepayagency/pages/ecommer/product/product_cart.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
 
-class ClientList extends ConsumerStatefulWidget {
-  const ClientList({super.key});
+class ProductList extends ConsumerStatefulWidget {
+  const ProductList({super.key});
 
   @override
-  ConsumerState<ConsumerStatefulWidget> createState() => _ClientListState();
+  ConsumerState<ConsumerStatefulWidget> createState() => _ProductListState();
 }
 
-class _ClientListState extends ConsumerState<ClientList> {
+class _ProductListState extends ConsumerState<ProductList> {
   TextEditingController _textEditingController = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
-    final controller = ref.watch(ClientProviders);
+    final controller = ref.watch(ProductProvider);
+
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Produits"),
+        centerTitle: true,
+      ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: AppColors.mainColor,
         onPressed: () async {
-          controller.getclients();
+          Get.to(() => AddProduct(name: '', idcateg: ''),
+              transition: Transition.fade);
         },
-        child: const Icon(Icons.refresh),
+        child: const Icon(CupertinoIcons.add_circled),
       ),
       backgroundColor: Colors.grey[200],
       drawer: DrawCostum(),
-      appBar: AppBar(
-        title: Text('Clients'),
-        centerTitle: true,
-        actions: [
-          IconButton(
-              onPressed: () {
-                Get.to(() => AddClient(), transition: Transition.fade);
-              },
-              icon: Icon(
-                Icons.add,
-                size: iconsizes,
-              ))
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: Column(
-          children: [
-            TextFormField(
+      body: SafeArea(
+          child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.only(left: 14.0, right: 14.0, top: 10),
+            child: TextFormField(
               controller: _textEditingController,
               onChanged: (value) {
                 controller.filterCrop(value);
@@ -77,7 +67,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                       color: AppColors.mainColor,
                     ),
                   ),
-                  hintText: "Rechercher un client",
+                  hintText: "Rechercher un produit",
                   isDense: true,
                   prefixIcon: Icon(
                     Icons.search,
@@ -93,15 +83,16 @@ class _ClientListState extends ConsumerState<ClientList> {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(5))),
             ),
-            SizedBox(
-              height: Get.height * 0.02,
-            ),
-            Expanded(
+          ),
+          SizedBox(
+            height: Get.height * 0.02,
+          ),
+          Expanded(
               child: _textEditingController.text.isNotEmpty &&
                       controller.filteredTempCropList.isEmpty
                   ? Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding: const EdgeInsets.only(left: 10.0, right: 10.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: const [
@@ -116,7 +107,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                               padding: EdgeInsets.all(5.0),
                               child: Center(
                                 child: Text(
-                                  'Aucun résultat pour votre recherche',
+                                  'Aucune résultat pour votre recherche',
                                   style: TextStyle(
                                       fontSize: fontsizes,
                                       fontWeight: FontWeight.normal),
@@ -129,16 +120,8 @@ class _ClientListState extends ConsumerState<ClientList> {
                     )
                   : controller.filteredTempCropList.isNotEmpty
                       ? AnimationLimiter(
-                          child: ListView.separated(
-                              separatorBuilder: (context, index) {
-                                return Divider(
-                                  height: 1,
-                                  thickness: 1,
-                                  indent: 4,
-                                  endIndent: 4,
-                                );
-                              },
-                              itemCount: controller.filteredTempCropList.length,
+                          child: ListView.builder(
+                              itemCount: controller.product.length,
                               shrinkWrap: true,
                               itemBuilder: (context, index) {
                                 return AnimationConfiguration.staggeredList(
@@ -146,21 +129,18 @@ class _ClientListState extends ConsumerState<ClientList> {
                                   duration: const Duration(milliseconds: 375),
                                   child: SlideAnimation(
                                       verticalOffset: 50.0,
-                                      child: ClientCard(
-                                        clientModel: controller
-                                            .filteredTempCropList[index],
+                                      child: ProductCard(
+                                        product: controller.product[index],
                                       )),
                                 );
                               }),
                         )
                       : Center(
                           child: CircularProgressIndicator(
-                              color: AppColors.mainColor, strokeWidth: 2),
-                        ),
-            ),
-          ],
-        ),
-      ),
+                              color: AppColors.mainColor, strokeWidth: 1.5),
+                        )),
+        ],
+      )),
     );
   }
 }

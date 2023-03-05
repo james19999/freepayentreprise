@@ -1,9 +1,9 @@
+import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
-import 'package:http/http.dart' as http;
 
 class UserCostumerController extends ChangeNotifier {
   UserCostumerController() {}
@@ -11,25 +11,40 @@ class UserCostumerController extends ChangeNotifier {
   // ignore: non_constant_identifier_names
   AuthConstumer(email, password) async {
     var data = {
-      "email": email.toString(),
-      "password": password.toString(),
+      "email": email,
+      "password": password,
     };
     // print(data);
-    var url = Uri.parse("${BaseUrl}logincompany");
-    // print(url);
-    final response = await http.post(url, body: data);
-    if (response.statusCode == 200) {
-      var result = jsonDecode(response.body);
-      if (result['status'] == true) {
-        localstorage.costumerinfo(
+    try {
+      var url = Uri.parse("${BaseUrl}logincompany");
+      // print(url);
+      final response = await http.post(url, body: data);
+      if (response.statusCode == 200) {
+        var result = jsonDecode(response.body);
+        // print(result);
+
+        if (result['status'] == true) {
+          localstorage.costumerinfo(
             username: result['name'],
             token: result['token'],
-            idcompany: result['id']);
+            idcompany: result['id'],
+            adress: result['company']['adress'],
+            description: result['company']['description'],
+            email: result['company']['email'],
+            quartier: result['company']['quartier'],
+            phone: result['company']['phone'],
+            password: result['company']['password'],
+            raison: result['company']['raison'],
+            img: result['company']['img'],
+          );
 
-        return true;
-      } else {
-        return false;
+          return true;
+        } else {
+          return false;
+        }
       }
+    } catch (e) {
+      print(e);
     }
   }
 
