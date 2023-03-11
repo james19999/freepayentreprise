@@ -155,8 +155,17 @@ class _CarteListState extends ConsumerState<CarteList> {
                               }),
                         )
                       : Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.mainColor, strokeWidth: 2),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                  color: AppColors.mainColor, strokeWidth: 2),
+                              SizedBox(
+                                height: Get.height * 0.01,
+                              ),
+                              Text("Vous n' avez pas de cartes pour l'instant.")
+                            ],
+                          ),
                         ),
             ),
           ],

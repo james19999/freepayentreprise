@@ -17,7 +17,6 @@ class UserCostumerController extends ChangeNotifier {
     // print(data);
     try {
       var url = Uri.parse("${BaseUrl}logincompany");
-      // print(url);
       final response = await http.post(url, body: data);
       if (response.statusCode == 200) {
         var result = jsonDecode(response.body);

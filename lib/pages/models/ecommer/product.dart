@@ -43,6 +43,7 @@ class Product {
         description: json["description"],
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
+
         // category: Category.fromJson(json["category"]),
       );
 
@@ -56,6 +57,7 @@ class Product {
         "description": description,
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
+
         // "category": category.toJson(),
       };
 }

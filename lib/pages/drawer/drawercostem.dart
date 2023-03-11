@@ -9,6 +9,9 @@ import 'package:freepayagency/pages/controller/user_controller.dart';
 import 'package:freepayagency/pages/ecommer/categorie/category_list.dart';
 import 'package:freepayagency/pages/ecommer/commande/commande_list.dart';
 import 'package:freepayagency/pages/ecommer/product/product_list.dart';
+import 'package:freepayagency/pages/ecommer/promotions/promotion_list.dart';
+import 'package:freepayagency/pages/ecommer/pub/pub_list.dart';
+import 'package:freepayagency/pages/ecommer/slider/slider_list.dart';
 import 'package:freepayagency/pages/helper/images.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/home/home.dart';
@@ -210,6 +213,43 @@ Drawer DrawCostum() {
                   height: 0,
                   thickness: 1,
                 ),
+                ListTileCustom("Slider", Icons.image, Icons.arrow_forward_ios,
+                    StyleText.copyWith(fontSize: 14), () {
+                  Get.back(closeOverlays: false);
+
+                  Get.to(() => SlideList(), transition: Transition.leftToRight);
+                }),
+                Divider(
+                  height: 0,
+                  thickness: 1,
+                ),
+                ListTileCustom(
+                    "Promotions/produits",
+                    Icons.campaign,
+                    Icons.arrow_forward_ios,
+                    StyleText.copyWith(fontSize: 14), () {
+                  Get.back(closeOverlays: false);
+
+                  Get.to(() => PromotionList(),
+                      transition: Transition.leftToRight);
+                }),
+                Divider(
+                  height: 0,
+                  thickness: 1,
+                ),
+                ListTileCustom(
+                    "Produits en avant",
+                    Icons.propane_outlined,
+                    Icons.arrow_forward_ios,
+                    StyleText.copyWith(fontSize: 14), () {
+                  Get.back(closeOverlays: false);
+
+                  Get.to(() => PubList(), transition: Transition.leftToRight);
+                }),
+                Divider(
+                  height: 0,
+                  thickness: 1,
+                ),
               ],
             )
           ],
@@ -271,7 +311,7 @@ Drawer DrawCostum() {
               color: AppColors.mainColor,
             ),
             title: Text(
-              "Français",
+              "Langue",
               style: StyleText.copyWith(fontSize: 14),
             ),
             trailing: Icon(Icons.arrow_forward_ios)),

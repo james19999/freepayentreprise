@@ -132,8 +132,17 @@ class _CategoryListState extends ConsumerState<CategoryList> {
                               }),
                         )
                       : Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.mainColor, strokeWidth: 1.5),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                  color: AppColors.mainColor, strokeWidth: 1.5),
+                              SizedBox(
+                                height: Get.height * 0.01,
+                              ),
+                              Text("Vous n'avez pas de catégorie disponible.")
+                            ],
+                          ),
                         )),
         ],
       )),

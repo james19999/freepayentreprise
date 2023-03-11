@@ -14,6 +14,9 @@ class Ordersitem {
     required this.createdAt,
     required this.updatedAt,
     required this.product,
+    required this.type,
+    required this.numbercarte,
+    required this.status,
   });
 
   int id;
@@ -23,6 +26,9 @@ class Ordersitem {
   DateTime createdAt;
   DateTime updatedAt;
   Product product;
+  dynamic type;
+  dynamic numbercarte;
+  dynamic status;
 
   factory Ordersitem.fromRawJson(String str) =>
       Ordersitem.fromJson(json.decode(str));
@@ -37,6 +43,9 @@ class Ordersitem {
         createdAt: DateTime.parse(json["created_at"]),
         updatedAt: DateTime.parse(json["updated_at"]),
         product: Product.fromJson(json["product"]),
+        type: json["type"],
+        numbercarte: json["numbercarte"],
+        status: json["status"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -47,6 +56,9 @@ class Ordersitem {
         "created_at": createdAt.toIso8601String(),
         "updated_at": updatedAt.toIso8601String(),
         "product": product.toJson(),
+        "type": type,
+        "numbercarte": numbercarte,
+        "status": status,
       };
 }
 

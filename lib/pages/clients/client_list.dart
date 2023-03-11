@@ -154,8 +154,18 @@ class _ClientListState extends ConsumerState<ClientList> {
                               }),
                         )
                       : Center(
-                          child: CircularProgressIndicator(
-                              color: AppColors.mainColor, strokeWidth: 2),
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              CircularProgressIndicator(
+                                  color: AppColors.mainColor, strokeWidth: 2),
+                              SizedBox(
+                                height: Get.height * 0.01,
+                              ),
+                              Text(
+                                  "Vous ne  disposez pas de client pour l'instant.")
+                            ],
+                          ),
                         ),
             ),
           ],

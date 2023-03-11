@@ -19,6 +19,7 @@ class OrderDetail extends ConsumerStatefulWidget {
 
 class _OrderDetailState extends ConsumerState<OrderDetail> {
   List<Ordersitem> orderItems = [];
+  var status;
   var total;
   @override
   @override
@@ -28,6 +29,9 @@ class _OrderDetailState extends ConsumerState<OrderDetail> {
   }
 
   loader() async {
+    orderItems.forEach((element) {
+      status = element.status;
+    });
     orderItems = await CommandeService.getOrderItems(widget.order.id);
     total = orderItems.fold(
         0,
@@ -146,7 +150,7 @@ class _OrderDetailState extends ConsumerState<OrderDetail> {
                                           ),
                                         ),
                                         Text(
-                                            "${order.product.price.toString()} XOF .")
+                                            "${order.product.price.toString()} XOF ."),
                                       ],
                                     ),
                                   )),
@@ -155,11 +159,11 @@ class _OrderDetailState extends ConsumerState<OrderDetail> {
                     ),
                   )
                 : Text("Commande en cours d'édition"),
-            TotalLine("Mode de payement :", "Free pay"),
+            TotalLine("Mode de payement :", "  Free pay"),
             SizedBox(
               height: Get.height * 0.01,
             ),
-            TotalLine("Status :", "En cours"),
+            TotalLine("Status :", status),
             SizedBox(
               height: Get.height * 0.01,
             ),

@@ -5,37 +5,37 @@
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
-class Welcome {
-  Welcome({
-    required this.order,
-    required this.message,
-    required this.token,
-    required this.status,
-  });
+// class Welcome {
+//   Welcome({
+//     required this.order,
+//     required this.message,
+//     required this.token,
+//     required this.status,
+//   });
 
-  List<Order> order;
-  String message;
-  dynamic token;
-  bool status;
+//   List<Order> order;
+//   String message;
+//   dynamic token;
+//   bool status;
 
-  factory Welcome.fromRawJson(String str) => Welcome.fromJson(json.decode(str));
+//   factory Welcome.fromRawJson(String str) => Welcome.fromJson(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+//   String toRawJson() => json.encode(toJson());
 
-  factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
-        order: List<Order>.from(json[" Order"].map((x) => Order.fromJson(x))),
-        message: json["message"],
-        token: json["token"],
-        status: json["status"],
-      );
+//   factory Welcome.fromJson(Map<String, dynamic> json) => Welcome(
+//         order: List<Order>.from(json[" Order"].map((x) => Order.fromJson(x))),
+//         message: json["message"],
+//         token: json["token"],
+//         status: json["status"],
+//       );
 
-  Map<String, dynamic> toJson() => {
-        " Order": List<dynamic>.from(order.map((x) => x.toJson())),
-        "message": message,
-        "token": token,
-        "status": status,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         " Order": List<dynamic>.from(order.map((x) => x.toJson())),
+//         "message": message,
+//         "token": token,
+//         "status": status,
+//       };
+// }
 
 class Order {
   Order({

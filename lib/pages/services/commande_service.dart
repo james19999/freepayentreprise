@@ -21,7 +21,7 @@ class CommandeService {
   }
 
   static Future<List<Ordersitem>> getOrderItems(id) async {
-    var url = Uri.parse("${BaseUrls}order_view/$id");
+    var url = Uri.parse("${BaseUrls}order/view/$id");
     final response = await http.get(url, headers: {
       'content-type': 'application/json',
     });

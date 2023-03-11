@@ -55,8 +55,8 @@ class _AddClientState extends ConsumerState<AddClient> {
                           var client = ClientModel(
                             name: _controllername.text,
                             adress: _controlleradresse.text,
-                            email: _controlleremail.text,
-                            identify: _controlleridentifiant.text,
+                            email: _controlleremail.text.trim(),
+                            identify: _controlleridentifiant.text.trim(),
                             phone: _controllerphone,
                             quartier: _controllerquartier.text,
                             ville: _controllerville.text,
