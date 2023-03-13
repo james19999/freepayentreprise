@@ -5,6 +5,7 @@ import 'package:freepayagency/pages/controller/category_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/ecommer/categorie/category_list.dart';
 import 'package:freepayagency/pages/models/ecommer/category.dart';
+import 'package:freepayagency/pages/services/category_services.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/toas/toas.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
@@ -78,8 +79,9 @@ class _EditCategoryState extends ConsumerState<EditCategory> {
                 child: TextButton.icon(
                     onPressed: () async {
                       if (_key.currentState!.validate()) {
-                        var check = await controller.uploadImageCategoryUpdate(
-                            _controllername.text, _image!, widget.category.id);
+                        var check = await CategoryService()
+                            .uploadImageCategoryUpdate(_controllername.text,
+                                _image!, widget.category.id);
                         if (check == true) {
                           Toas.getSnackbarsucess(appName, "Catégorie modifié");
                           controller.getCategorys();

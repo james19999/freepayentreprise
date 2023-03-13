@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 import 'dart:io';
 
@@ -48,11 +49,19 @@ class _AddProductState extends ConsumerState<AddProduct> {
     }
   }
 
+  bool _isLoading = true;
   final picker = ImagePicker();
   @override
   void initState() {
     super.initState();
     _controllercategorie.text = widget.name;
+  }
+
+  @override
+  void dispose() {
+    // TODO: implement dispose
+    super.dispose();
+    _isLoading;
   }
 
   @override
@@ -82,12 +91,16 @@ class _AddProductState extends ConsumerState<AddProduct> {
                             widget.idcateg.toString(),
                             _controllerdescription.text,
                             _image!);
-
+                        Timer(Duration(seconds: 2), () {
+                          setState(() {
+                            _isLoading = false;
+                          });
+                        });
                         if (check == true) {
                           Toas.getSnackbarsucess(
                               appName, "Le produit à été bien créer");
-                          controller.getProducts();
                           Get.off(() => ProductList());
+                          controller.getProducts();
                         } else {
                           Toas.getSnackbarEror(appName,
                               "Erreur lors de la créaction du produit.");
@@ -98,10 +111,16 @@ class _AddProductState extends ConsumerState<AddProduct> {
                       Icons.add,
                       color: Colors.white,
                     ),
-                    label: Text(
-                      "Enregistrer ",
-                      style: StyleText.copyWith(color: Colors.white),
-                    ))),
+                    label: _isLoading
+                        ? Text(
+                            "Enregistrer ",
+                            style: StyleText.copyWith(color: Colors.white),
+                          )
+                        : Center(
+                            child: CircularProgressIndicator(
+                            strokeWidth: 1.5,
+                            color: Colors.white,
+                          )))),
           )),
       body: SafeArea(
           child: SingleChildScrollView(

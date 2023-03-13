@@ -35,20 +35,14 @@ class ProductController extends ChangeNotifier {
       'category_id': category_id,
       "img": await MultipartFile.fromFile(img.path, filename: fileName),
     });
+    var url = "${BaseUrls}products/product/create";
+    var response = await dio.post(url, data: formData);
     try {
-      var response =
-          await dio.post("${BaseUrls}products/product/create", data: formData);
-      if (response.statusCode == 200) {
-        var result = response.data;
-
-        if (result['status'] == true) {
-          return true;
-        } else {
-          Toas.getSnackbarEror(
-            appName,
-            result['message'],
-          );
-        }
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        Toas.getSnackbarEror(
+            appName, "Erreur lors de la créaction du produit.");
       }
     } catch (e) {}
   }

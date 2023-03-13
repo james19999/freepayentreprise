@@ -11,6 +11,7 @@ import 'package:freepayagency/pages/ecommer/categorie/edit_category.dart';
 import 'package:freepayagency/pages/ecommer/product/product_add.dart';
 import 'package:freepayagency/pages/models/client_model.dart';
 import 'package:freepayagency/pages/models/ecommer/category.dart';
+import 'package:freepayagency/pages/services/category_services.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
 import 'package:get/get.dart';
@@ -60,7 +61,7 @@ class CategoryCard extends ConsumerWidget {
                     },
                     mainButton: IconButton(
                         onPressed: () async {
-                          await controller.delateCategory(categorys.id);
+                          await CategoryService().delateCategory(categorys.id);
                           controller.getCategorys();
                           Get.back();
                         },

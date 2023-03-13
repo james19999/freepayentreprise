@@ -8,6 +8,7 @@ import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/category_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/ecommer/categorie/category_list.dart';
+import 'package:freepayagency/pages/services/category_services.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/toas/toas.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
@@ -67,11 +68,13 @@ class _AddCategoryState extends ConsumerState<AddCategory> {
                             _controllername.text, _image!);
                         if (check == true) {
                           Toas.getSnackbarsucess(appName, "Catégorie créer");
-                          controller.getCategorys();
                           Get.off(() => CategoryList());
+                          controller.getCategorys();
                         } else {
                           Toas.getSnackbarEror(appName,
                               "Erreur de créaction vérifier si la catégorie n'existe pas.");
+                          Get.off(() => CategoryList());
+                          controller.getCategorys();
                         }
                       }
                     },

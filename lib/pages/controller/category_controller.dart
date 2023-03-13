@@ -43,17 +43,6 @@ class CategoryController extends ChangeNotifier {
     notifyListeners();
   }
 
-  uploader(name, image) async {
-    Dio dio = Dio();
-    var formData = FormData.fromMap({
-      'name': name,
-      'img': image != null
-          ? await MultipartFile.fromFile(image.path,
-              filename: image.path.split("/")?.last)
-          : null,
-    });
-  }
-
   uploadImage(name, File img) async {
     Dio dio = Dio();
     String fileName = img.path.split('/').last;
@@ -61,22 +50,18 @@ class CategoryController extends ChangeNotifier {
       "name": name,
       "img": await MultipartFile.fromFile(img.path, filename: fileName),
     });
+    var url = "${BaseUrls}categorys/category/create";
+    print(url);
+    var response = await dio.post(url, data: formData);
     try {
-      var response = await dio.post("${BaseUrls}categorys/category/create",
-          data: formData);
-      if (response.statusCode == 200) {
-        var result = response.data;
-
-        if (result['status'] == true) {
-          return true;
-        } else {
-          Toas.getSnackbarEror(
-            appName,
-            result['message'],
-          );
-        }
+      if (response.statusCode == 201) {
+        return true;
+      } else {
+        Toas.getSnackbarEror(appName,
+            "Erreur de créaction vérifier si la catégorie n'existe pas.");
       }
     } catch (e) {}
+    notifyListeners();
   }
 
   uploadImageCategoryUpdate(name, File img, id) async {
