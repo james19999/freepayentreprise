@@ -4,6 +4,7 @@ import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/user_controller.dart';
 import 'package:freepayagency/pages/helper/images.dart';
 import 'package:freepayagency/pages/home/home.dart';
+import 'package:freepayagency/pages/passwordresert/email_input.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/toas/toas.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
@@ -20,9 +21,9 @@ class Login extends ConsumerStatefulWidget {
 class _LoginState extends ConsumerState<Login> {
   bool obscur = true;
   bool isloade = false;
+  TextEditingController passwordController = TextEditingController();
 
   TextEditingController emailController = TextEditingController();
-  TextEditingController passwordController = TextEditingController();
   GlobalKey<FormState> _forme = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -98,6 +99,7 @@ class _LoginState extends ConsumerState<Login> {
                                 SizedBox(
                                   height: Get.height * 0.05,
                                 ),
+                                
                                 TextFormField(
                                   controller: passwordController,
                                   validator: (value) => value!.isEmpty
@@ -196,7 +198,7 @@ class _LoginState extends ConsumerState<Login> {
                                 ),
                                 MaterialButton(
                                   onPressed: () async {
-                                    // Get.to(() => CreateCompte(), transition: Transition.fade);
+                                    Get.to(() => Emailinput(), transition: Transition.fade);
                                   },
                                   child: Text("Mot de passe oublié ?"),
                                 )

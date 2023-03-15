@@ -21,9 +21,15 @@ class localstorage {
   static get password => storage.read("password");
   static get raison => storage.read("raison");
   static get img => storage.read("img");
+  static get emailresert => storage.read("emailresert");
+
 
   static setCarteCode(code) async {
     storage.write("cartecode", code);
+  }
+
+  static resertemail (email) async {
+    storage.write("emailresert", email);
   }
 
   static costumerinfo(
