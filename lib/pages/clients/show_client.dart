@@ -91,6 +91,32 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
+                  Wrap(children: [
+                     Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                      width: Get.width *0.3,
+                      child: TextFormField(
+                      
+                        decoration: InputDecoration(
+                          hintText: "Modifier l'identifiant",
+                          contentPadding: EdgeInsetsGeometry.lerp(
+                      EdgeInsets.all(5.0), EdgeInsets.all(8.0), 1),
+                          isDense: true,
+                          border: OutlineInputBorder()
+                        ),
+                      )) ,
+                    Container(
+                      width: Get.width *0.3,
+
+                      child: TextButton(onPressed: () {
+                        
+                      }, child: Text("Modifier ")),
+                    )
+                     ],)
+                   
+                  ],)
                 ],
               ),
             )));

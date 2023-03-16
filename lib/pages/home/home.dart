@@ -102,6 +102,7 @@ class _HomeState extends ConsumerState<Home> {
                                             Text(
                                               "Clients",
                                               style: StyleText.copyWith(
+                                               fontSize: 15,
                                                   color: Colors.white),
                                             ),
                                           ],
@@ -153,7 +154,7 @@ class _HomeState extends ConsumerState<Home> {
                                             Text("Free Pay Carte",
                                                 style: StyleText.copyWith(
                                                     color: Colors.white,
-                                                    fontSize: fontsizes)),
+                                                    fontSize: 15,)),
                                           ],
                                         ),
                                         Divider(
@@ -167,7 +168,7 @@ class _HomeState extends ConsumerState<Home> {
                                         Text("${controllercart.cartes.length ?? ""}",
                                             style: StyleText.copyWith(
                                                 color: Colors.white,
-                                                fontSize: fontsizes)):Text("0"),
+                                                fontSize: 15,)):Text("0"),
                                       ],
                                     ),
                                   ),
@@ -190,7 +191,7 @@ class _HomeState extends ConsumerState<Home> {
                                         "Active carte",
                                         style: StyleText.copyWith(
                                             color: Colors.white,
-                                            fontSize: fontsizes),
+                                            fontSize: 15,),
                                       ),
                                       Divider(
                                         height: 1,
@@ -203,7 +204,7 @@ class _HomeState extends ConsumerState<Home> {
                                       Text("${controllercart.activecarte.length?? ""}",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
-                                              fontSize: fontsizes)):Text("0"),
+                                              fontSize: 15,)):Text("0"),
                                     ],
                                   ),
                                 ),
@@ -245,8 +246,9 @@ class _HomeState extends ConsumerState<Home> {
                                             color: Colors.white,
                                           ),
                                           Text(
-                                            "Total de la journée",
+                                            "Revenue du jour",
                                             style: StyleText.copyWith(
+                                               fontSize: 15,
                                                 color: Colors.white),
                                           ),
                                         ],
@@ -288,10 +290,10 @@ class _HomeState extends ConsumerState<Home> {
                                             Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
-                                          Text("Total de la semaine",
+                                          Text("Revenue de la semaine",
                                               style: StyleText.copyWith(
                                                   color: Colors.white,
-                                                  fontSize: fontsizes)),
+                                                  fontSize: 15,)),
                                         ],
                                       ),
                                       Divider(
@@ -304,7 +306,7 @@ class _HomeState extends ConsumerState<Home> {
                                       Text(  "${controller.weekTotal ?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
-                                              fontSize: fontsizes)),
+                                              fontSize: 15,)),
                                     ],
                                   ),
                                 ),
@@ -330,10 +332,10 @@ class _HomeState extends ConsumerState<Home> {
                                             Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
-                                          Text("Total du mois ",
+                                          Text("Revenue du mois ",
                                               style: StyleText.copyWith(
                                                   color: Colors.white,
-                                                  fontSize: fontsizes)),
+                                                  fontSize: 15,)),
                                         ],
                                       ),
                                       Divider(
@@ -346,7 +348,7 @@ class _HomeState extends ConsumerState<Home> {
                                       Text("${controller.mounthTotal ?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
-                                              fontSize: fontsizes)),
+                                              fontSize: 15,)),
                                     ],
                                   ),
                                 ),
