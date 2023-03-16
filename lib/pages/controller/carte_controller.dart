@@ -12,6 +12,7 @@ class CartCostumerController extends ChangeNotifier {
   List<Cart> cartes = [];
   List filteredTempCropList = [];
   var activecarte;
+  int amounts=0;
   CartCostumerController() {
     getcartcompany();
   }
@@ -21,6 +22,10 @@ class CartCostumerController extends ChangeNotifier {
       cartes = await Cartservices.getClientCart();
       filteredTempCropList = cartes;
       activecarte=cartes.where((element) => element.status==1).toList();
+
+      amounts = cartes
+            .map((item) => int.parse(item.amount))
+            .reduce((value, current) => value + current);
     } catch (e) {}
     notifyListeners();
   }

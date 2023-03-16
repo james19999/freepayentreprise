@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:freepayagency/pages/carte/carte_transaction_widget.dart';
-import 'package:freepayagency/pages/carte/list_cart.dart';
 import 'package:freepayagency/pages/clients/widget_cart_listsyle.dart';
 import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/carte_controller.dart';
@@ -61,7 +60,7 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
                         onPressed: () async {
                         await  controller.DeleteCart(widget.cart.code);
                         controller.getcartcompany();
-                          Get.to(()=>CarteList());
+                          Get.back();
                         },
                         icon: Icon(
                           CupertinoIcons.delete,

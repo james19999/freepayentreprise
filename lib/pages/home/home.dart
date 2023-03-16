@@ -9,6 +9,7 @@ import 'package:freepayagency/pages/controller/carte_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/helper/date_convert.dart';
 import 'package:freepayagency/pages/helper/images.dart';
+import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/history/history_list.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
@@ -56,8 +57,13 @@ class _HomeState extends ConsumerState<Home> {
             centerTitle: true,
           ),
           drawer: DrawCostum(),
-          body: SafeArea(
-            child: Column(
+          body:
+        localstorage.status==1?
+          
+           SafeArea(
+            child: 
+            
+            Column(
               children: [
                 Row(
                   children: [
@@ -375,7 +381,7 @@ class _HomeState extends ConsumerState<Home> {
                    },) :Center(child:Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                      children: [
-                       CircularProgressIndicator(strokeWidth: 1.5,),
+                      //  CircularProgressIndicator(strokeWidth: 1.5,),
                        SizedBox(height: Get.height *0.02,),
                        Text("Aucune transaction effectuée ")
                      ],
@@ -383,6 +389,16 @@ class _HomeState extends ConsumerState<Home> {
                  )
               ],
             ),
+          ) :Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Center(child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text("Bienvenue ${localstorage.username}"),
+                SizedBox(height: Get.height *0.03,),
+                Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte pour profiter de notre service."),
+              ],
+            )),
           ),
         ),
         onWillPop: () async {
@@ -390,7 +406,7 @@ class _HomeState extends ConsumerState<Home> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("Voulez vous fermer l'application"),
+                title: Text("Voulez vous fermer l'application?"),
                 actionsAlignment: MainAxisAlignment.spaceEvenly,
                 actions: [
                   TextButton(

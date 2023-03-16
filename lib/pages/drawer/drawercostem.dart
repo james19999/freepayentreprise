@@ -25,7 +25,9 @@ import 'package:get/get.dart';
 
 Drawer DrawCostum() {
   return Drawer(
-    child: ListView(
+    child: 
+     localstorage.status==1?
+    ListView(
       // Important: Remove any padding from the ListView.
       padding: EdgeInsets.zero,
       children: [
@@ -353,6 +355,9 @@ Drawer DrawCostum() {
           ),
         ),
       ],
+    ):Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Center(child: Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte ")),
     ),
   );
 }

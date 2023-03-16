@@ -35,6 +35,7 @@ class UserCostumerController extends ChangeNotifier {
             password: result['company']['password'],
             raison: result['company']['raison'],
             img: result['company']['img'],
+            status: result['company']['status'],
           );
 
           return true;

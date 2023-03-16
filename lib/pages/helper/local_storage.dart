@@ -22,6 +22,7 @@ class localstorage {
   static get raison => storage.read("raison");
   static get img => storage.read("img");
   static get emailresert => storage.read("emailresert");
+  static get status => storage.read("status");
 
 
   static setCarteCode(code) async {
@@ -43,12 +44,16 @@ class localstorage {
       quartier,
       password,
       raison,
-      img}) async {
+      img,
+      status
+      
+      }) async {
     storage.write("username", username);
     storage.write("token", token);
     storage.write("idcompany", idcompany);
 
     storage.write("adress", adress);
+    storage.write("status", status);
     storage.write("phone", phone);
     storage.write("email", email);
     storage.write("description", description);

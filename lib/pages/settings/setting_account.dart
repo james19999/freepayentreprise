@@ -8,6 +8,8 @@ import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:freepayagency/pages/carte/debit_cart.dart';
 import 'package:freepayagency/pages/carte/validation_transaction_carte.dart';
 import 'package:freepayagency/pages/color/color.dart';
+import 'package:freepayagency/pages/controller/carte_controller.dart';
+import 'package:freepayagency/pages/controller/history_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/services/user_service.dart';
@@ -81,6 +83,10 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
   ];
   @override
   Widget build(BuildContext context) {
+    final controller = ref.watch(CartProviders);
+    final controllers =ref.watch(HistoryProviders);
+
+
     {
       return Scaffold(
           drawer: DrawCostum(),
@@ -104,99 +110,121 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
             ],
           ),
           body: SafeArea(
-            child: Column(children: [
-              SizedBox(
-                height: Get.height * 0.01,
-              ),
-              Container(
-                  child: Column(children: [
-                CircleAvatar(
-                  backgroundColor: Colors.transparent.withOpacity(0.2),
-                  child: image == null
-                      ? InkWell(
-                          onTap: () {
-                            pickOne();
-                          },
-                          child: SizedBox(
-                              width: 80,
-                              height: 80,
-                              child: ClipOval(
-                                  child: Image.network(
-                                "${BaseImage}${localstorage.img}",
-                                fit: BoxFit.cover,
-                              ))),
-                        )
-                      : InkWell(
-                          onTap: () {
-                            pickOne();
-                          },
-                          child: SizedBox(
-                              width: 80,
-                              height: 80,
-                              child: ClipOval(
-                                  child: Image.file(
-                                File(image!.path),
-                                fit: BoxFit.cover,
-                              ))),
-                        ),
-                  radius: 50,
-                ),
+            child: SingleChildScrollView(
+              child: Column(children: [
                 SizedBox(
-                  height: 10,
+                  height: Get.height * 0.01,
                 ),
-                Text(
-                  localstorage.username,
-                  style: TextStyle(
-                    fontFamily: "poppins",
-                    fontSize: 19,
-                  ),
-                )
-              ])),
-              AnimationLimiter(
-                child: Expanded(
-                  child: ListView.separated(
-                    itemCount: compte.length,
-                    shrinkWrap: true,
-                    separatorBuilder: (context, index) {
-                      return Divider(
-                        thickness: 1.2,
-                      );
-                    },
-                    itemBuilder: (BuildContext context, int index) {
-                      var cpt = compte[index];
-                      return AnimationConfiguration.staggeredList(
-                        position: index,
-                        duration: const Duration(milliseconds: 375),
-                        child: SlideAnimation(
-                          verticalOffset: 50.0,
-                          child: FadeInAnimation(
-                            child: ListTile(
-                              onTap: () {
-                                if (index == 0) {
-                                  Get.to(() => CompteEdit(),
-                                      transition: Transition.leftToRight);
-                                } else if (index == 1) {
-                                  Get.to(() => EditPasswordAccount(),
-                                      transition: Transition.leftToRight);
-                                } else if (index == 2) {}
-                              },
-                              title: Text(
-                                cpt['name'],
-                                style: TextStyle(
-                                    fontFamily: "poppins",
-                                    color: AppColors.mainColor),
-                              ),
-                              leading: cpt['icon'],
-                              trailing: cpt['path'],
-                            ),
+                Container(
+                    child: Column(children: [
+                  CircleAvatar(
+                    backgroundColor: Colors.white,
+                    child: image == null
+                        ? InkWell(
+                            onTap: () {
+                              pickOne();
+                            },
+                            child: SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: ClipOval(
+                                    child: Image.network(
+                                  "${BaseImage}${localstorage.img}",
+                                  fit: BoxFit.cover,
+                                ))),
+                          )
+                        : InkWell(
+                            onTap: () {
+                              pickOne();
+                            },
+                            child: SizedBox(
+                                width: 80,
+                                height: 80,
+                                child: ClipOval(
+                                    child: Image.file(
+                                  File(image!.path),
+                                  fit: BoxFit.cover,
+                                ))),
                           ),
+                    radius: 50,
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(
+                    localstorage.username,
+                    style: TextStyle(
+                      fontFamily: "poppins",
+                      fontSize: 19,
+                    ),
+                  )
+                ])),
+                Row(
+                  children: [
+                    AnimationLimiter(
+                      child: Expanded(
+                        child: ListView.separated(
+                          itemCount: compte.length,
+                          shrinkWrap: true,
+                          separatorBuilder: (context, index) {
+                            return Divider(
+                              thickness: 1.2,
+                            );
+                          },
+                          itemBuilder: (BuildContext context, int index) {
+                            var cpt = compte[index];
+                            return AnimationConfiguration.staggeredList(
+                              position: index,
+                              duration: const Duration(milliseconds: 375),
+                              child: SlideAnimation(
+                                verticalOffset: 50.0,
+                                child: FadeInAnimation(
+                                  child: ListTile(
+                                    onTap: () {
+                                      if (index == 0) {
+                                        Get.to(() => CompteEdit(),
+                                            transition: Transition.leftToRight);
+                                      } else if (index == 1) {
+                                        Get.to(() => EditPasswordAccount(),
+                                            transition: Transition.leftToRight);
+                                      } else if (index == 2) {}
+                                    },
+                                    title: Text(
+                                      cpt['name'],
+                                      style: TextStyle(
+                                          fontFamily: "poppins",
+                                          color: AppColors.mainColor),
+                                    ),
+                                    leading: cpt['icon'],
+                                    trailing: cpt['path'],
+                                  ),
+                                ),
+                              ),
+                            );
+                          },
                         ),
-                      );
-                    },
+                      ),
+                    ),
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(child: Text("Montant total des  cartes: ${controllers.globalTotal} XOF ")),
+                    ],
                   ),
                 ),
-              ),
-            ]),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
+                    children: [
+                      Expanded(child: Text("Montant restant sur les  cartes: ${controller.amounts} XOF ")),
+                    ],
+                  ),
+                ),
+              ]),
+            ),
           ));
     }
   }
