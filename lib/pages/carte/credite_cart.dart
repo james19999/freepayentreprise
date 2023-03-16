@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freepayagency/pages/carte/list_cart.dart';
 import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/carte_controller.dart';
+import 'package:freepayagency/pages/controller/history_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/toas/toas.dart';
@@ -47,6 +48,8 @@ class _CreditCartState extends ConsumerState<CreditCart> {
   @override
   Widget build(BuildContext context) {
     final controller = ref.watch(CartProviders);
+    final controllers =ref.watch(HistoryProviders);
+
     return Scaffold(
       drawer: DrawCostum(),
       appBar: AppBar(
@@ -71,6 +74,7 @@ class _CreditCartState extends ConsumerState<CreditCart> {
                           Toas.getSnackbarsucess(
                               appName, "La carte à éte bien créditer");
                           controller.getcartcompany();
+                          controllers.getallhistoryMethode();
                         }
                       }
                     },

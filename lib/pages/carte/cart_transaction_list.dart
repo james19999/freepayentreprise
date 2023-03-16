@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:freepayagency/pages/carte/carte_transaction_widget.dart';
+import 'package:freepayagency/pages/carte/list_cart.dart';
 import 'package:freepayagency/pages/clients/widget_cart_listsyle.dart';
 import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/carte_controller.dart';
@@ -9,6 +11,7 @@ import 'package:freepayagency/pages/models/cart_client.dart';
 import 'package:freepayagency/pages/models/transaction.dart';
 import 'package:freepayagency/pages/services/transaction_service.dart';
 import 'package:freepayagency/pages/styles/style.dart';
+import 'package:freepayagency/pages/urls/baseurl.dart';
 import 'package:get/get.dart';
 
 class Transactionlist extends ConsumerStatefulWidget {
@@ -45,6 +48,28 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
         appBar: AppBar(
           title: Text("Transaction"),
           centerTitle: true,
+          actions: [
+            IconButton(onPressed: () {
+               Get.showSnackbar(GetSnackBar(
+                    message: "Voulez-vous supprimé?    Non",
+                    title: "${appName}",
+                    isDismissible: true,
+                    onTap: (snack) {
+                      Get.back();
+                    },
+                    mainButton: IconButton(
+                        onPressed: () async {
+                        await  controller.DeleteCart(widget.cart.code);
+                        controller.getcartcompany();
+                          Get.to(()=>CarteList());
+                        },
+                        icon: Icon(
+                          CupertinoIcons.delete,
+                          color: Colors.red,
+                        )),
+                  ));
+            }, icon: Icon(Icons.delete ,color: Colors.red,))
+          ],
           bottom: TabBar(
             indicatorColor: AppColors.mainColor,
             tabs: [

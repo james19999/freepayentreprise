@@ -91,14 +91,6 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                   SizedBox(
                     height: Get.height * 0.01,
                   ),
-                  Row(
-                    children: [
-                      Text(
-                        "Info de la carte",
-                        style: StyleText.copyWith(fontSize: fontsizes),
-                      ),
-                    ],
-                  ),
                 ],
               ),
             )));

@@ -11,7 +11,7 @@ import 'package:http/http.dart' as http;
 class CartCostumerController extends ChangeNotifier {
   List<Cart> cartes = [];
   List filteredTempCropList = [];
-
+  var activecarte;
   CartCostumerController() {
     getcartcompany();
   }
@@ -20,6 +20,7 @@ class CartCostumerController extends ChangeNotifier {
     try {
       cartes = await Cartservices.getClientCart();
       filteredTempCropList = cartes;
+      activecarte=cartes.where((element) => element.status==1).toList();
     } catch (e) {}
     notifyListeners();
   }
@@ -128,6 +129,27 @@ class CartCostumerController extends ChangeNotifier {
   ActivDesactiveCart(code) async {
     var url = Uri.parse("${BaseUrl}ActivDesactiveCart/$code");
     final response = await http.post(url,
+        body: {}, headers: {"Authorization": "Bearer ${localstorage.token}"});
+    if (response.statusCode == 200) {
+      var result = jsonDecode(response.body);
+
+      if (result['status'] == true) {
+        Toas.getSnackbarsucess(
+          appName,
+          result['message'],
+        );
+      } else {
+        Toas.getSnackbarEror(
+          appName,
+          result['message'],
+        );
+      }
+    }
+    notifyListeners();
+  }
+  DeleteCart(code) async {
+    var url = Uri.parse("${BaseUrl}deletecarte/$code");
+    final response = await http.delete(url,
         body: {}, headers: {"Authorization": "Bearer ${localstorage.token}"});
     if (response.statusCode == 200) {
       var result = jsonDecode(response.body);

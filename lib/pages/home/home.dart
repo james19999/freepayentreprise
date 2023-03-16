@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:freepayagency/pages/carte/list_cart.dart';
 import 'package:freepayagency/pages/clients/client_list.dart';
 import 'package:freepayagency/pages/color/color.dart';
+import 'package:freepayagency/pages/controller/history_controller.dart';
+import 'package:freepayagency/pages/controller/client_controller.dart';
+import 'package:freepayagency/pages/controller/carte_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
+import 'package:freepayagency/pages/helper/date_convert.dart';
 import 'package:freepayagency/pages/helper/images.dart';
+import 'package:freepayagency/pages/history/history_list.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
@@ -18,11 +24,16 @@ class Home extends ConsumerStatefulWidget {
 class _HomeState extends ConsumerState<Home> {
   @override
   Widget build(BuildContext context) {
+    final controller =ref.watch(HistoryProviders);
+    final controllerclient =ref.watch(ClientProviders);
+    final controllercart =ref.watch(CartProviders);
     return WillPopScope(
         child: Scaffold(
           floatingActionButton: FloatingActionButton(
             backgroundColor: AppColors.mainColor,
-            onPressed: () async {},
+            onPressed: () async {
+              controller.getallhistoryMethode();
+            },
             child: const Icon(Icons.refresh),
           ),
           backgroundColor: Colors.grey[100],
@@ -60,44 +71,50 @@ class _HomeState extends ConsumerState<Home> {
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: ZoomTapAnimation(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color:
-                                          Colors.transparent.withOpacity(0.2),
-                                      borderRadius: BorderRadius.circular(5)),
-                                  width: Get.width * 0.58,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Icon(
-                                            Icons.group,
-                                            color: Colors.white,
-                                          ),
-                                          Text(
-                                            "Clients",
-                                            style: StyleText.copyWith(
-                                                color: Colors.white),
-                                          ),
-                                        ],
-                                      ),
-                                      Divider(
-                                        height: 1,
-                                        thickness: 1,
-                                        color: Colors.white,
-                                        indent: 9,
-                                        endIndent: 9,
-                                      ),
-                                      Text(
-                                        "50000 ",
-                                        style: StyleText.copyWith(
-                                            color: Colors.white),
-                                      ),
-                                    ],
+                                child: InkWell(
+                                  onTap: () {
+                                    Get.to(()=>ClientList(),transition: Transition.fade);
+                                  },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color:
+                                            Colors.transparent.withOpacity(0.2),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    width: Get.width * 0.58,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Icon(
+                                              Icons.group,
+                                              color: Colors.white,
+                                            ),
+                                            Text(
+                                              "Clients",
+                                              style: StyleText.copyWith(
+                                                  color: Colors.white),
+                                            ),
+                                          ],
+                                        ),
+                                        Divider(
+                                          height: 1,
+                                          thickness: 1,
+                                          color: Colors.white,
+                                          indent: 9,
+                                          endIndent: 9,
+                                        ),
+                                        controllerclient.clienttable.isNotEmpty?
+                                        Text(
+                                          "${controllerclient.clienttable.length ?? ""}",
+                                          style: StyleText.copyWith(
+                                              color: Colors.white),
+                                        ):Text("0"),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -105,41 +122,48 @@ class _HomeState extends ConsumerState<Home> {
                             Padding(
                               padding: const EdgeInsets.all(8.0),
                               child: ZoomTapAnimation(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                      color: AppColors.mainColor,
-                                      borderRadius: BorderRadius.circular(5)),
-                                  width: Get.width * 0.58,
-                                  child: Column(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.spaceEvenly,
-                                        children: [
-                                          Icon(
-                                            Icons.card_giftcard,
-                                            color: Colors.white,
-                                          ),
-                                          Text("Free Pay Carte",
-                                              style: StyleText.copyWith(
-                                                  color: Colors.white,
-                                                  fontSize: fontsizes)),
-                                        ],
-                                      ),
-                                      Divider(
-                                        height: 1,
-                                        thickness: 1,
-                                        color: Colors.white,
-                                        indent: 9,
-                                        endIndent: 9,
-                                      ),
-                                      Text("5000000 ",
-                                          style: StyleText.copyWith(
+                                child: InkWell(
+                                   onTap: () {
+                                    Get.to(()=>CarteList(),transition: Transition.fade);
+                                     
+                                   },
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                        color: AppColors.mainColor,
+                                        borderRadius: BorderRadius.circular(5)),
+                                    width: Get.width * 0.58,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceEvenly,
+                                          children: [
+                                            Icon(
+                                              Icons.card_giftcard,
                                               color: Colors.white,
-                                              fontSize: fontsizes)),
-                                    ],
+                                            ),
+                                            Text("Free Pay Carte",
+                                                style: StyleText.copyWith(
+                                                    color: Colors.white,
+                                                    fontSize: fontsizes)),
+                                          ],
+                                        ),
+                                        Divider(
+                                          height: 1,
+                                          thickness: 1,
+                                          color: Colors.white,
+                                          indent: 9,
+                                          endIndent: 9,
+                                        ),
+                                         controllercart.cartes.isNotEmpty?
+                                        Text("${controllercart.cartes.length ?? ""}",
+                                            style: StyleText.copyWith(
+                                                color: Colors.white,
+                                                fontSize: fontsizes)):Text("0"),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               ),
@@ -157,7 +181,7 @@ class _HomeState extends ConsumerState<Home> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                        "Dépense",
+                                        "Active carte",
                                         style: StyleText.copyWith(
                                             color: Colors.white,
                                             fontSize: fontsizes),
@@ -169,10 +193,11 @@ class _HomeState extends ConsumerState<Home> {
                                         indent: 9,
                                         endIndent: 9,
                                       ),
-                                      Text("70000 F",
+                                      controllercart.activecarte!=null?
+                                      Text("${controllercart.activecarte.length?? ""}",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
-                                              fontSize: fontsizes)),
+                                              fontSize: fontsizes)):Text("0"),
                                     ],
                                   ),
                                 ),
@@ -210,11 +235,11 @@ class _HomeState extends ConsumerState<Home> {
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Icon(
-                                            Icons.group,
+                                            Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
                                           Text(
-                                            "Actif Carte",
+                                            "Total de la journée",
                                             style: StyleText.copyWith(
                                                 color: Colors.white),
                                           ),
@@ -228,7 +253,7 @@ class _HomeState extends ConsumerState<Home> {
                                         endIndent: 9,
                                       ),
                                       Text(
-                                        "50000 ",
+                                        "${controller.todayTotal ?? ""} XOF",
                                         style: StyleText.copyWith(
                                             color: Colors.white),
                                       ),
@@ -254,10 +279,10 @@ class _HomeState extends ConsumerState<Home> {
                                             MainAxisAlignment.spaceEvenly,
                                         children: [
                                           Icon(
-                                            Icons.card_membership_sharp,
+                                            Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
-                                          Text("Carte inactif",
+                                          Text("Total de la semaine",
                                               style: StyleText.copyWith(
                                                   color: Colors.white,
                                                   fontSize: fontsizes)),
@@ -270,7 +295,7 @@ class _HomeState extends ConsumerState<Home> {
                                         indent: 9,
                                         endIndent: 9,
                                       ),
-                                      Text("5000000 ",
+                                      Text(  "${controller.weekTotal ?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
                                               fontSize: fontsizes)),
@@ -291,11 +316,19 @@ class _HomeState extends ConsumerState<Home> {
                                     mainAxisAlignment:
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
-                                      Text(
-                                        "Dépense",
-                                        style: StyleText.copyWith(
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceEvenly,
+                                        children: [
+                                          Icon(
+                                            Icons.monetization_on_rounded,
                                             color: Colors.white,
-                                            fontSize: fontsizes),
+                                          ),
+                                          Text("Total du mois ",
+                                              style: StyleText.copyWith(
+                                                  color: Colors.white,
+                                                  fontSize: fontsizes)),
+                                        ],
                                       ),
                                       Divider(
                                         height: 1,
@@ -304,7 +337,7 @@ class _HomeState extends ConsumerState<Home> {
                                         indent: 9,
                                         endIndent: 9,
                                       ),
-                                      Text("70000 F",
+                                      Text("${controller.mounthTotal ?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
                                               fontSize: fontsizes)),
@@ -313,12 +346,41 @@ class _HomeState extends ConsumerState<Home> {
                                 ),
                               ),
                             ),
+                           
                           ],
                         ),
                       ),
                     ),
                   ],
                 ),
+                ListTile(
+                   onTap: () {
+                     Get.to(()=>HistoryTransfert(),transition: Transition.fade);
+                   },
+                  title: Text("Transaction de la journée",style: StyleText.copyWith(fontSize: 13),),trailing: Text("Voir l'historique"),),
+                 Expanded(
+                   child: 
+                  controller.Historyday.isNotEmpty?
+                   
+                   ListView.builder(
+                     shrinkWrap: true,
+                     itemCount: controller.Historyday.length,
+                    itemBuilder: (context, index) {
+                      return ListTile(title:
+                       Text("${controller.Historyday[index].amount} XOF"),
+                       subtitle: Text("${controller.Historyday[index].cartNumber}"),
+                       trailing: Text(DateConverter.formatDate(controller.Historyday[index].createdAt)),
+                       
+                       );
+                   },) :Center(child:Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                     children: [
+                       CircularProgressIndicator(strokeWidth: 1.5,),
+                       SizedBox(height: Get.height *0.02,),
+                       Text("Aucune transaction effectuée ")
+                     ],
+                   ) ,),
+                 )
               ],
             ),
           ),
