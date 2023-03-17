@@ -65,7 +65,7 @@ Drawer DrawCostum() {
         //   onTap: () {},
         // ),
         ListTileCustom(
-            "Dashboard", Icons.dashboard, Icons.arrow_forward_ios, StyleText,
+            "Dashboard".tr, Icons.dashboard, Icons.arrow_forward_ios, StyleText,
             () {
           Get.back(closeOverlays: false);
           Get.to(() => Home(), transition: Transition.leftToRight);
@@ -74,7 +74,7 @@ Drawer DrawCostum() {
           height: 1,
           thickness: 1,
         ),
-        ListTileCustom("Client", Icons.group, Icons.arrow_forward_ios,
+        ListTileCustom("Clients".tr, Icons.group, Icons.arrow_forward_ios,
             StyleText.copyWith(fontSize: 14), () {
           Get.back(closeOverlays: false);
 
@@ -102,7 +102,7 @@ Drawer DrawCostum() {
             Column(
               children: [
                 ListTileCustom(
-                    "Free Pay Carte",
+                    "Free Pay Carte".tr,
                     Icons.card_giftcard,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -114,7 +114,7 @@ Drawer DrawCostum() {
                   height: 1,
                   thickness: 1,
                 ),
-                ListTileCustom("Crédité", Icons.money, Icons.arrow_forward_ios,
+                ListTileCustom("Crédité".tr, Icons.money, Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
                   Get.back(closeOverlays: false);
 
@@ -126,7 +126,7 @@ Drawer DrawCostum() {
                   thickness: 1,
                 ),
                 ListTileCustom(
-                    "Débité",
+                    "Débité".tr,
                     Icons.monetization_on_outlined,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -140,7 +140,7 @@ Drawer DrawCostum() {
                   thickness: 1,
                 ),
                 ListTileCustom(
-                    "Validé une transaction",
+                    "Valider une transaction".tr,
                     Icons.check_circle_outline,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -170,14 +170,14 @@ Drawer DrawCostum() {
             color: Colors.grey,
           ),
           title: Text(
-            "E-Commerce",
+            "E-Commerce".tr,
             style: StyleText.copyWith(fontSize: 14),
           ),
           children: [
             Column(
               children: [
                 ListTileCustom(
-                    "Produits",
+                    "Produits".tr,
                     Icons.production_quantity_limits,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -190,7 +190,7 @@ Drawer DrawCostum() {
                   height: 0,
                   thickness: 1,
                 ),
-                ListTileCustom("Catégories", Icons.tag, Icons.arrow_forward_ios,
+                ListTileCustom("Catégories".tr, Icons.tag, Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
                   Get.back(closeOverlays: false);
 
@@ -202,7 +202,7 @@ Drawer DrawCostum() {
                   thickness: 1,
                 ),
                 ListTileCustom(
-                    "Commandes",
+                    "Commandes".tr,
                     Icons.business_center,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -215,7 +215,7 @@ Drawer DrawCostum() {
                   height: 0,
                   thickness: 1,
                 ),
-                ListTileCustom("Slider", Icons.image, Icons.arrow_forward_ios,
+                ListTileCustom("Slider".tr, Icons.image, Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
                   Get.back(closeOverlays: false);
 
@@ -226,7 +226,7 @@ Drawer DrawCostum() {
                   thickness: 1,
                 ),
                 ListTileCustom(
-                    "Promotions/produits",
+                    "Promotions/produits".tr,
                     Icons.campaign,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -240,7 +240,7 @@ Drawer DrawCostum() {
                   thickness: 1,
                 ),
                 ListTileCustom(
-                    "Produits en avant",
+                    "Produits en avant".tr,
                     Icons.propane_outlined,
                     Icons.arrow_forward_ios,
                     StyleText.copyWith(fontSize: 14), () {
@@ -257,7 +257,7 @@ Drawer DrawCostum() {
           ],
         ),
 
-        ListTileCustom("Paramètre du compte", Icons.settings,
+        ListTileCustom("Paramètre du compte".tr, Icons.settings,
             Icons.arrow_forward_ios, StyleText.copyWith(fontSize: 14), () {
           Get.back(closeOverlays: false);
 
@@ -279,7 +279,7 @@ Drawer DrawCostum() {
                       child: Card(
                         elevation: 0,
                         child: ListTile(
-                          title: Text("Français"),
+                          title: Text("Français".tr),
                           trailing: Image.asset(
                             fr,
                             width: 50,
@@ -292,7 +292,7 @@ Drawer DrawCostum() {
                       child: Card(
                         elevation: 0,
                         child: ListTile(
-                          title: Text("Anglais"),
+                          title: Text("Anglais".tr),
                           trailing: Image.asset(
                             en,
                             width: 50,
@@ -313,7 +313,7 @@ Drawer DrawCostum() {
               color: AppColors.mainColor,
             ),
             title: Text(
-              "Langue",
+              "Langue".tr,
               style: StyleText.copyWith(fontSize: 14),
             ),
             trailing: Icon(Icons.arrow_forward_ios)),
@@ -329,10 +329,10 @@ Drawer DrawCostum() {
           ),
           onTap: () async {
             Get.defaultDialog(
-                title: "Agent",
-                middleText: 'Voulez-vous vraiment vous déconnectez',
-                textCancel: "Non",
-                textConfirm: "Oui",
+                title: "Entreprise".tr,
+                middleText: 'Voulez-vous vraiment vous déconnectez'.tr,
+                textCancel: "Non".tr,
+                textConfirm: "Oui".tr,
                 confirmTextColor: Colors.white,
                 cancelTextColor: AppColors.mainColor,
                 buttonColor: AppColors.mainColor,
@@ -347,7 +347,7 @@ Drawer DrawCostum() {
                 onCancel: () => {});
           },
           title: Text(
-            'Déconnexion',
+            'Déconnexion'.tr,
             style: StyleText.copyWith(
               color: Colors.red,
             ),
@@ -357,7 +357,7 @@ Drawer DrawCostum() {
       ],
     ):Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Center(child: Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte ")),
+      child: Center(child: Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte".tr)),
     ),
   );
 }

@@ -47,7 +47,7 @@ class PasswordUpdate extends ConsumerWidget {
            
               logocontainer(),
                         Text(
-                          "Modifié votre mot de passe",
+                          "Modifié votre mot de passe".tr,
                           // style: StyleText,
                    ),
            
@@ -60,7 +60,7 @@ class PasswordUpdate extends ConsumerWidget {
                         TextFormField(
                                   controller: passwordController,
                                   validator: (value) => value!.isEmpty
-                                      ? " Votre nouveau mot de passe"
+                                      ? "Votre nouveau mot de passe".tr
                                       : null,
                                   obscureText: ref.watch(obscur),
                                   decoration: InputDecoration(
@@ -78,7 +78,7 @@ class PasswordUpdate extends ConsumerWidget {
                                           color: AppColors.mainColor,
                                         ),
                                       ),
-                                      hintText: "Nouveau mot de passe",
+                                      hintText: "Nouveau mot de passe".tr,
                                       isDense: true,
                                       prefixIcon: Icon(
                                         Icons.lock,
@@ -111,7 +111,7 @@ class PasswordUpdate extends ConsumerWidget {
                                 TextFormField(
                                   controller: passconfirmController,
                                   validator: (value) => value!.isEmpty
-                                      ? "Confirmez votre mot de passe"
+                                      ? "Confirmez votre mot de passe".tr
                                       : null,
                                   obscureText: ref.watch(_obscur),
                                   decoration: InputDecoration(
@@ -129,7 +129,7 @@ class PasswordUpdate extends ConsumerWidget {
                                           color: AppColors.mainColor,
                                         ),
                                       ),
-                                      hintText: "Confirmez votre mot de passe",
+                                      hintText: "Confirmez votre mot de passe".tr,
                                       isDense: true,
                                       prefixIcon: Icon(
                                         Icons.lock,
@@ -176,11 +176,11 @@ class PasswordUpdate extends ConsumerWidget {
                                                       transition: Transition.fade);
                                                 } else {
                                                   Toas.getSnackbarEror(appName,
-                                                      "Erreur de modification du mot de passe");
+                                                      "Erreur de modification du mot de passe".tr);
                                                 }
                                                }else{
                                                     Toas.getSnackbarEror(appName,
-                                                      "Les mot de passe doivent être identique");
+                                                      "Les mot de passe doivent être identique".tr);
                                                }
                                           }
                                         },
@@ -190,7 +190,7 @@ class PasswordUpdate extends ConsumerWidget {
                                         ),
                                         label:
                                              Text(
-                                                "Envoyer",
+                                                "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
                                               )

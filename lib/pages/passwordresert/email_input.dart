@@ -38,7 +38,7 @@ class Emailinput extends ConsumerWidget {
            
               logocontainer(),
                         Text(
-                          "Entrer l' adresse mail du compte",
+                          "Entrer l' adresse mail du compte".tr,
                           // style: StyleText,
                    ),
            
@@ -51,7 +51,7 @@ class Emailinput extends ConsumerWidget {
                 TextFormField(
                     controller: emailController,
                     validator: (value) => value!.isEmpty
-                        ? "Entrer votre adresse mail"
+                        ? "Entrer votre adresse mail".tr
                         : null,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -69,7 +69,7 @@ class Emailinput extends ConsumerWidget {
                           ),
                         ),
                         isDense: true,
-                        hintText: "Votre adresse mail",
+                        hintText: "Votre adresse mail".tr,
                         prefixIcon: Icon(
                           Icons.mail,
                           color: AppColors.mainColor,
@@ -98,7 +98,7 @@ class Emailinput extends ConsumerWidget {
                                               Get.to(()=>CodeInput());
                                             } else {
                                               Toas.getSnackbarEror(appName,
-                                                  "Erreur l'adresse mail n'existe pas.");
+                                                  "Erreur l'adresse mail n'existe pas.".tr);
                                             }
                                           }
                                         },
@@ -108,7 +108,7 @@ class Emailinput extends ConsumerWidget {
                                         ),
                                         label:
                                              Text(
-                                                "Envoyer",
+                                                "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
                                               )

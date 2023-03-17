@@ -49,7 +49,7 @@ class _EditClientState extends ConsumerState<EditClient> {
         backgroundColor: Colors.grey[300],
         drawer: DrawCostum(),
         appBar: AppBar(
-          title: Text('Ajouter un client'),
+          title: Text('Modifier un client'.tr),
           centerTitle: true,
         ),
         bottomSheet: Container(
@@ -77,7 +77,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                               client, widget.clientmodel.id);
                           if (chek == true) {
                             Toas.getSnackbarsucess(
-                                appName, "Le client à été bien modifier");
+                                appName, "Le client à été bien modifier".tr);
                             Get.to(() => ClientList(),
                                 transition: Transition.fade);
                             controller.getclients();
@@ -89,7 +89,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                         color: Colors.white,
                       ),
                       label: Text(
-                        "Enregistrer ",
+                        "Enregistrer".tr,
                         style: StyleText.copyWith(color: Colors.white),
                       ))),
             )),
@@ -106,10 +106,10 @@ class _EditClientState extends ConsumerState<EditClient> {
                           TextFormField(
                             controller: _controllername,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer le nom"
+                                ? "Nom et prénom du client".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Nom"),
+                                label: Text("Nom et prénom du client".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -122,7 +122,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Nom et prénom du client",
+                                hintText: "Nom et prénom du client".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -133,10 +133,10 @@ class _EditClientState extends ConsumerState<EditClient> {
                           TextFormField(
                             controller: _controllerville,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer la ville"
+                                ? "Veuillez entrer la ville".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Ville"),
+                                label: Text("Ville".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -149,7 +149,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Ville  du client",
+                                hintText: "Ville  du client".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -160,10 +160,10 @@ class _EditClientState extends ConsumerState<EditClient> {
                           TextFormField(
                             controller: _controlleradresse,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer l 'adresse"
+                                ? "Veuillez entrer l 'adresse".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Adresse"),
+                                label: Text("Adresse".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -176,7 +176,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Adresse du client",
+                                hintText: "Adresse du client".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -187,7 +187,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                           TextFormField(
                             controller: _controlleremail,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer l'email"
+                                ? "Veuillez entrer l'email".tr
                                 : null,
                             decoration: InputDecoration(
                                 label: Text("Email"),
@@ -203,7 +203,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Email",
+                                hintText: "Email".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -214,10 +214,10 @@ class _EditClientState extends ConsumerState<EditClient> {
                           TextFormField(
                             controller: _controllerquartier,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer le quartier"
+                                ? "Veuillez entrer le quartier".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Quartier"),
+                                label: Text("Quartier".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -230,7 +230,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Quartier",
+                                hintText: "Quartier".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -243,10 +243,10 @@ class _EditClientState extends ConsumerState<EditClient> {
                             readOnly: true,
                             controller: _controlleridentifiant,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer un identifiant"
+                                ? "Veuillez entrer un identifiant".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Identifiant"),
+                                label: Text("Identifiant".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -259,7 +259,7 @@ class _EditClientState extends ConsumerState<EditClient> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Choisissez un identifiant",
+                                hintText: "Choisissez un identifiant".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -269,13 +269,13 @@ class _EditClientState extends ConsumerState<EditClient> {
                           ),
                           IntlPhoneField(
                             initialCountryCode: 'TG',
-                            searchText: "Rechercher votre pays",
+                            searchText: "Rechercher votre pays".tr,
                             invalidNumberMessage:
-                                "Numéro de téléphone invalide",
+                                "Numéro de téléphone invalide".tr,
                             decoration: InputDecoration(
-                              label: Text("Téléphone"),
+                              label: Text("Téléphone".tr),
                               isDense: true,
-                              hintText: "Numéro de téléphone",
+                              hintText: "Numéro de téléphone".tr,
                               border: OutlineInputBorder(
                                 borderSide:
                                     BorderSide(color: AppColors.mainColor),

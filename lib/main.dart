@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       translations: Languages(),
       locale: Get.deviceLocale,
-      fallbackLocale: const Locale('en', 'US'),
+      fallbackLocale: const Locale('fr', 'FR'),
       debugShowCheckedModeBanner: false,
       title: '',
       theme: ThemeData(fontFamily: "poppins").copyWith(

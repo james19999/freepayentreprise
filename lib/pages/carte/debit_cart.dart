@@ -53,7 +53,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
     return Scaffold(
       drawer: DrawCostum(),
       appBar: AppBar(
-        title: Text("Débité Free Pay Carte"),
+        title: Text("Débité Free Pay Carte".tr),
       ),
       bottomSheet: Container(
           height: Get.height * 0.11,
@@ -72,7 +72,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                         if (chek == true) {
                           Get.to(() => CarteList());
                           Toas.getSnackbarsucess(
-                              appName, "La carte à éte bien débiter");
+                              appName, "La carte à éte bien débiter".tr);
                           controller.getcartcompany();
                           controllers.getallhistoryMethode();
                           
@@ -84,7 +84,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                       color: Colors.white,
                     ),
                     label: Text(
-                      "Valider",
+                      "Valider".tr,
                       style: StyleText.copyWith(color: Colors.white),
                     ))),
           )),
@@ -103,10 +103,10 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                         keyboardType: TextInputType.number,
                         controller: _controllercode,
                         validator: (value) => value!.isEmpty
-                            ? "Veuillez entrer le numéro de la carte"
+                            ? "Veuillez entrer le numéro de la carte".tr
                             : null,
                         decoration: InputDecoration(
-                            label: Text("Entrer le numéro  ou scanné la carte"),
+                            label: Text("Entrer le numéro  ou scanné la carte".tr),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                               borderSide: BorderSide(
@@ -119,7 +119,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                                 color: AppColors.mainColor,
                               ),
                             ),
-                            hintText: "Le numéro de la carte",
+                            hintText: "Le numéro de la carte".tr,
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -131,10 +131,10 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                         keyboardType: TextInputType.number,
                         controller: _controlleramount,
                         validator: (value) => value!.isEmpty
-                            ? "Veuillez entrer le montant"
+                            ? "Veuillez entrer le montant".tr
                             : null,
                         decoration: InputDecoration(
-                            label: Text("Montant"),
+                            label: Text("Montant".tr),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                               borderSide: BorderSide(
@@ -147,7 +147,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                                 color: AppColors.mainColor,
                               ),
                             ),
-                            hintText: "Montant",
+                            hintText: "Montant".tr,
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -181,7 +181,7 @@ class _DebiteCarteState extends ConsumerState<DebiteCarte> {
                       SizedBox(
                         height: Get.height * 0.03,
                       ),
-                      Text("Cliquez ici pour Scanner la carte.")
+                      Text("Cliquez ici pour Scanner la carte.".tr)
                     ],
                   ))
             ],

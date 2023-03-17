@@ -51,7 +51,7 @@ class _HomeState extends ConsumerState<Home> {
             ],
             elevation: 0,
             title: Text(
-              "Free Pay  Dashboard",
+              "Free Pay  tableau de bord".tr,
               style: StyleText,
             ),
             centerTitle: true,
@@ -100,7 +100,7 @@ class _HomeState extends ConsumerState<Home> {
                                               color: Colors.white,
                                             ),
                                             Text(
-                                              "Clients",
+                                              "Clients".tr,
                                               style: StyleText.copyWith(
                                                fontSize: 15,
                                                   color: Colors.white),
@@ -151,7 +151,7 @@ class _HomeState extends ConsumerState<Home> {
                                               Icons.card_giftcard,
                                               color: Colors.white,
                                             ),
-                                            Text("Free Pay Carte",
+                                            Text("Free Pay Carte".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white,
                                                     fontSize: 15,)),
@@ -188,7 +188,7 @@ class _HomeState extends ConsumerState<Home> {
                                         MainAxisAlignment.spaceEvenly,
                                     children: [
                                       Text(
-                                        "Active carte",
+                                        "Active carte".tr,
                                         style: StyleText.copyWith(
                                             color: Colors.white,
                                             fontSize: 15,),
@@ -246,7 +246,7 @@ class _HomeState extends ConsumerState<Home> {
                                             color: Colors.white,
                                           ),
                                           Text(
-                                            "Revenue du jour",
+                                            "Revenue du jour".tr,
                                             style: StyleText.copyWith(
                                                fontSize: 15,
                                                 color: Colors.white),
@@ -290,7 +290,7 @@ class _HomeState extends ConsumerState<Home> {
                                             Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
-                                          Text("Revenue de la semaine",
+                                          Text("Revenue de la semaine".tr,
                                               style: StyleText.copyWith(
                                                   color: Colors.white,
                                                   fontSize: 15,)),
@@ -332,7 +332,7 @@ class _HomeState extends ConsumerState<Home> {
                                             Icons.monetization_on_rounded,
                                             color: Colors.white,
                                           ),
-                                          Text("Revenue du mois ",
+                                          Text("Revenue du mois".tr,
                                               style: StyleText.copyWith(
                                                   color: Colors.white,
                                                   fontSize: 15,)),
@@ -365,7 +365,7 @@ class _HomeState extends ConsumerState<Home> {
                    onTap: () {
                      Get.to(()=>HistoryTransfert(),transition: Transition.fade);
                    },
-                  title: Text("Transaction de la journée",style: StyleText.copyWith(fontSize: 13),),trailing: Text("Voir l'historique"),),
+                  title: Text("Transaction de la journée".tr,style: StyleText.copyWith(fontSize: 13),),trailing: Text("Voir l'historique".tr),),
                  Expanded(
                    child: 
                   controller.Historyday.isNotEmpty?
@@ -385,7 +385,7 @@ class _HomeState extends ConsumerState<Home> {
                      children: [
                       //  CircularProgressIndicator(strokeWidth: 1.5,),
                        SizedBox(height: Get.height *0.02,),
-                       Text("Aucune transaction effectuée ")
+                       Text("Aucune transaction effectuée".tr)
                      ],
                    ) ,),
                  )
@@ -396,9 +396,9 @@ class _HomeState extends ConsumerState<Home> {
             child: Center(child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("Bienvenue ${localstorage.username}"),
+                Text("${"Bienvenue".tr} ${localstorage.username}"),
                 SizedBox(height: Get.height *0.03,),
-                Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte pour profiter de notre service."),
+                Text("Contactez  +288 93 26 60 04 / +228 92 21 25 30 pour valider votre compte pour profiter de notre service.".tr),
               ],
             )),
           ),
@@ -408,20 +408,20 @@ class _HomeState extends ConsumerState<Home> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("Voulez vous fermer l'application?"),
+                title: Text("Voulez vous fermer l'application ?".tr),
                 actionsAlignment: MainAxisAlignment.spaceEvenly,
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
-                    child: Text('Oui'),
+                    child: Text('Oui'.tr),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context, false);
                     },
-                    child: Text('Non'),
+                    child: Text('Non'.tr),
                   ),
                 ],
               );

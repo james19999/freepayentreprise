@@ -38,7 +38,7 @@ class CodeInput extends ConsumerWidget {
            
               logocontainer(),
                         Text(
-                          "Entrer le code que vous avez reçu par mail",
+                          "Entrer le code que vous avez reçu par mail".tr,
                           // style: StyleText,
                    ),
            
@@ -51,7 +51,7 @@ class CodeInput extends ConsumerWidget {
                 TextFormField(
                     controller: codeController,
                     validator: (value) => value!.isEmpty
-                        ? "Entrer le code que vous avez reçu par mail"
+                        ? "Entrer le code que vous avez reçu par mail".tr
                         : null,
                     decoration: InputDecoration(
                         enabledBorder: OutlineInputBorder(
@@ -69,7 +69,7 @@ class CodeInput extends ConsumerWidget {
                           ),
                         ),
                         isDense: true,
-                        hintText: "Entrer le code que vous avez reçu par mail",
+                        hintText: "Entrer le code que vous avez reçu par mail".tr,
                         prefixIcon: Icon(
                           Icons.key,
                           color: AppColors.mainColor,
@@ -98,7 +98,7 @@ class CodeInput extends ConsumerWidget {
                                              Get.to(()=>PasswordUpdate());
                                             } else {
                                               Toas.getSnackbarEror(appName,
-                                                  "Code inavlide");
+                                                  "Code invalid".tr);
                                             }
                                           }
                                         },
@@ -108,7 +108,7 @@ class CodeInput extends ConsumerWidget {
                                         ),
                                         label:
                                              Text(
-                                                "Envoyer",
+                                                "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
                                               )

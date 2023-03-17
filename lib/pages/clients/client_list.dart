@@ -6,8 +6,6 @@ import 'package:freepayagency/pages/clients/client_card.dart';
 import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/client_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
-import 'package:freepayagency/pages/models/client_model.dart';
-import 'package:freepayagency/pages/services/client_service.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
 
@@ -40,7 +38,7 @@ class _ClientListState extends ConsumerState<ClientList> {
       backgroundColor: Colors.grey[200],
       drawer: DrawCostum(),
       appBar: AppBar(
-        title: Text('Clients'),
+        title: Text('Clients'.tr),
         centerTitle: true,
         actions: [
           IconButton(
@@ -77,7 +75,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                       color: AppColors.mainColor,
                     ),
                   ),
-                  hintText: "Rechercher un client",
+                  hintText: "Rechercher un client".tr,
                   isDense: true,
                   prefixIcon: Icon(
                     Icons.search,
@@ -104,7 +102,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                         padding: const EdgeInsets.all(10.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children:  [
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Icon(
@@ -116,7 +114,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                               padding: EdgeInsets.all(5.0),
                               child: Center(
                                 child: Text(
-                                  'Aucun résultat pour votre recherche',
+                                  'Aucun résultat pour votre recherche'.tr,
                                   style: TextStyle(
                                       fontSize: fontsizes,
                                       fontWeight: FontWeight.normal),
@@ -163,7 +161,7 @@ class _ClientListState extends ConsumerState<ClientList> {
                                 height: Get.height * 0.01,
                               ),
                               Text(
-                                  "Vous ne  disposez pas de client pour l'instant.")
+                                  "Vous ne  disposez pas de client pour l'instant.".tr)
                             ],
                           ),
                         ),

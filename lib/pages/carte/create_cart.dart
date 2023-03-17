@@ -43,7 +43,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
         backgroundColor: Colors.grey[300],
         drawer: DrawCostum(),
         appBar: AppBar(
-          title: Text('Ajouter une carte'),
+          title: Text('Ajouter une carte'.tr),
           centerTitle: true,
         ),
         bottomSheet: Container(
@@ -65,7 +65,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                           var chek = await controllercarte.CreateCarte(carts);
                           if (chek == true) {
                             Toas.getSnackbarsucess(
-                                appName, "La carte à été bien ajouter");
+                                appName, "La carte à été bien ajouter".tr);
                             Get.off(() => CarteList(),
                                 transition: Transition.fade);
                             controllercarte.getcartcompany();
@@ -77,7 +77,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                         color: Colors.white,
                       ),
                       label: Text(
-                        "Enregistrer ",
+                        "Enregistrer".tr,
                         style: StyleText.copyWith(color: Colors.white),
                       ))),
             )),
@@ -95,10 +95,10 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                             keyboardType: TextInputType.number,
                             controller: _controlleramount,
                             validator: (value) => value!.isEmpty
-                                ? "Veuillez entrer le montant"
+                                ? "Veuillez entrer le montant".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Montant"),
+                                label: Text("Montant".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -111,7 +111,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Montant",
+                                hintText: "Montant".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),
@@ -130,7 +130,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                             onChanged: (value) {},
                             readOnly: true,
                             decoration: InputDecoration(
-                                label: Text("Sélectionnez un client"),
+                                label: Text("Sélectionnez un client".tr),
                                 focusedBorder: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(5.0),
                                   borderSide: BorderSide(
@@ -143,7 +143,7 @@ class _CreateCartState extends ConsumerState<CreateCart> {
                                     color: AppColors.mainColor,
                                   ),
                                 ),
-                                hintText: "Sélectionnez un cient",
+                                hintText: "Sélectionnez un client".tr,
                                 isDense: true,
                                 border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(5))),

@@ -25,7 +25,7 @@ class _ShowClientState extends ConsumerState<ShowClient> {
         drawer: DrawCostum(),
         appBar: AppBar(
           title: Text(
-            'Informations client',
+            'Informations client'.tr,
             style: StyleText,
           ),
           centerTitle: true,
@@ -41,7 +41,7 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                 )),
             IconButton(
                 onPressed: () {
-                  Toas.message(context, "Action indisponible");
+                  Toas.message(context, "Action indisponible".tr);
                 },
                 icon: Icon(
                   Icons.delete,
@@ -71,19 +71,19 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                   Row(
                     children: [
                       Text(
-                        "Info personnelle",
+                        "Info personnelle".tr,
                         style: StyleText.copyWith(fontSize: fontsizes),
                       ),
                     ],
                   ),
-                  Listilinfo("Nom", "${widget.client.name}".toUpperCase()),
+                  Listilinfo("Nom".tr, "${widget.client.name}".toUpperCase()),
                   Listilinfo(
-                      "Téléphone", "${widget.client.phone}".toUpperCase()),
-                  Listilinfo("Ville", "${widget.client.ville}".toUpperCase()),
+                      "Téléphone".tr, "${widget.client.phone}".toUpperCase()),
+                  Listilinfo("Ville".tr, "${widget.client.ville}".toUpperCase()),
                   Listilinfo(
-                      "Adresse", "${widget.client.adress}".toUpperCase()),
-                  Listilinfo("Email", "${widget.client.email}"),
-                  Listilinfo("Quartier", "${widget.client.quartier}"),
+                      "Adresse".tr, "${widget.client.adress}".toUpperCase()),
+                  Listilinfo("Email".tr, "${widget.client.email}"),
+                  Listilinfo("Quartier".tr, "${widget.client.quartier}"),
                   Divider(
                     height: 2,
                     thickness: 2,
@@ -98,9 +98,12 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                         Container(
                       width: Get.width *0.3,
                       child: TextFormField(
-                      
+                         onTap: () {
+                          Toas.message(context, "Action indisponible".tr);
+                           
+                         },
                         decoration: InputDecoration(
-                          hintText: "Modifier l'identifiant",
+                          hintText: "Modifier l'identifiant".tr,
                           contentPadding: EdgeInsetsGeometry.lerp(
                       EdgeInsets.all(5.0), EdgeInsets.all(8.0), 1),
                           isDense: true,
@@ -111,8 +114,8 @@ class _ShowClientState extends ConsumerState<ShowClient> {
                       width: Get.width *0.3,
 
                       child: TextButton(onPressed: () {
-                        
-                      }, child: Text("Modifier ")),
+                        Toas.message(context, "Action indisponible".tr);
+                      }, child: Text("Modifier".tr)),
                     )
                      ],)
                    

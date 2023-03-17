@@ -53,7 +53,7 @@ class _LoginState extends ConsumerState<Login> {
                     children: [
                       logocontainer(),
                       Text(
-                        "Connectez vous à votre entreprise",
+                        "Connectez vous à votre entreprise".tr,
                         // style: StyleText,
                       ),
                       SizedBox(
@@ -69,7 +69,7 @@ class _LoginState extends ConsumerState<Login> {
                                 TextFormField(
                                   controller: emailController,
                                   validator: (value) => value!.isEmpty
-                                      ? "Entrer votre adresse mail"
+                                      ? "Entrer votre adresse mail".tr
                                       : null,
                                   decoration: InputDecoration(
                                       enabledBorder: OutlineInputBorder(
@@ -87,7 +87,7 @@ class _LoginState extends ConsumerState<Login> {
                                         ),
                                       ),
                                       isDense: true,
-                                      hintText: "Votre adresse mail",
+                                      hintText: "Votre adresse mail".tr,
                                       prefixIcon: Icon(
                                         Icons.mail,
                                         color: AppColors.mainColor,
@@ -103,7 +103,7 @@ class _LoginState extends ConsumerState<Login> {
                                 TextFormField(
                                   controller: passwordController,
                                   validator: (value) => value!.isEmpty
-                                      ? "Entrer votre mot de passe"
+                                      ? "Entrer votre mot de passe".tr
                                       : null,
                                   obscureText: obscur,
                                   decoration: InputDecoration(
@@ -121,7 +121,7 @@ class _LoginState extends ConsumerState<Login> {
                                           color: AppColors.mainColor,
                                         ),
                                       ),
-                                      hintText: "Votre mote de passe",
+                                      hintText: "Votre mote de passe".tr,
                                       isDense: true,
                                       prefixIcon: Icon(
                                         Icons.lock,
@@ -173,7 +173,7 @@ class _LoginState extends ConsumerState<Login> {
                                                 transition: Transition.fade);
                                           } else {
                                             Toas.getSnackbarEror(appName,
-                                                "Erreur de connexion vérifier vos informations");
+                                                "Erreur de connexion vérifier vos informations".tr);
                                           }
                                         }
                                       },
@@ -183,7 +183,7 @@ class _LoginState extends ConsumerState<Login> {
                                       ),
                                       label: isloade == false
                                           ? Text(
-                                              "Se Connecter",
+                                              "Se Connecter".tr,
                                               style: StyleText.copyWith(
                                                   color: Colors.white),
                                             )
@@ -200,7 +200,7 @@ class _LoginState extends ConsumerState<Login> {
                                   onPressed: () async {
                                     Get.to(() => Emailinput(), transition: Transition.fade);
                                   },
-                                  child: Text("Mot de passe oublié ?"),
+                                  child: Text("Mot de passe oublié ?".tr),
                                 )
                               ],
                             ),
@@ -217,20 +217,20 @@ class _LoginState extends ConsumerState<Login> {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: Text("voulez vous fermer l'application"),
+                title: Text("Voulez vous fermer l'application ?".tr),
                 actionsAlignment: MainAxisAlignment.spaceEvenly,
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context, true);
                     },
-                    child: Text('Oui'),
+                    child: Text('Oui'.tr),
                   ),
                   TextButton(
                     onPressed: () {
                       Navigator.pop(context, false);
                     },
-                    child: Text('Non'),
+                    child: Text('Non'.tr),
                   ),
                 ],
               );

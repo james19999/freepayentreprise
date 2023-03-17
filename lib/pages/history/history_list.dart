@@ -4,6 +4,7 @@ import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/history_controller.dart';
 import 'package:freepayagency/pages/helper/date_convert.dart';
 import 'package:freepayagency/pages/styles/style.dart';
+import 'package:get/get.dart';
 
 class HistoryTransfert extends ConsumerStatefulWidget {
   const HistoryTransfert({super.key});
@@ -22,30 +23,30 @@ class _HistoryTransfertState extends ConsumerState<HistoryTransfert> {
       length: 3,
       child: Scaffold(
         appBar: AppBar(
-          bottom: const TabBar(
+          bottom:  TabBar(
             indicatorColor: AppColors.mainColor,
             tabs: [
               Tab(
                 child: Text(
-                  "Journée",
+                  "Jour".tr,
                   style: StyleText,
                 ),
               ),
               Tab(
                 child: Text(
-                  "Semaine",
+                  "Semaine".tr,
                   style: StyleText,
                 ),
               ),
               Tab(
                 child: Text(
-                  "Mois",
+                  "Mois".tr,
                   style: StyleText,
                 ),
               ),
             ],
           ),
-          title: Text('Historiques des transactions'),
+          title: Text('Historiques des transactions'.tr),
         ),
         body: TabBarView(
           children: [

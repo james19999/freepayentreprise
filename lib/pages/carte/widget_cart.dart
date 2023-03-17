@@ -39,7 +39,7 @@ class CartCard extends ConsumerWidget {
                               color: AppColors.mainColor, fontSize: fontsizes),
                         ),
                         Text(
-                          cart.status == 1 ? "Activé" : "Désactivé",
+                          cart.status == 1 ? "Activée".tr : "Désactivée".tr,
                           style: StyleText.copyWith(
                               color:
                                   cart.status == 1 ? Colors.green : Colors.red,

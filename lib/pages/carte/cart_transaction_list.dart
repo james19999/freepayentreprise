@@ -45,12 +45,12 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
       initialIndex: 0,
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Transaction"),
+          title: Text("Transaction".tr),
           centerTitle: true,
           actions: [
             IconButton(onPressed: () {
                Get.showSnackbar(GetSnackBar(
-                    message: "Voulez-vous supprimé?    Non",
+                    message: "Voulez-vous supprimé?    Non".tr,
                     title: "${appName}",
                     isDismissible: true,
                     onTap: (snack) {
@@ -74,13 +74,13 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
             tabs: [
               Tab(
                 child: Text(
-                  "Détails",
+                  "Détails".tr,
                   style: StyleText.copyWith(fontSize: fontsizes),
                 ),
               ),
               Tab(
                 child: Text(
-                  "Transaction",
+                  "Transaction".tr,
                   style: StyleText.copyWith(fontSize: fontsizes),
                 ),
               ),
@@ -96,21 +96,21 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
                     height: Get.height * 0.01,
                   ),
                   Text(
-                    "Info personnelle.",
+                    "Info personnelle.".tr,
                     style: StyleText.copyWith(
                       fontSize: fontsizes,
                     ),
                   ),
                   Listilinfo(
-                      "Nom", "${widget.cart.client!.name} .".toUpperCase()),
-                  Listilinfo("Téléphone",
+                      "Nom".tr, "${widget.cart.client!.name} .".toUpperCase()),
+                  Listilinfo("Téléphone".tr,
                       "${widget.cart.client!.phone} .".toUpperCase()),
                   Listilinfo(
-                      "Ville", "${widget.cart.client!.ville} .".toUpperCase()),
-                  Listilinfo("Adresse",
+                      "Ville".tr, "${widget.cart.client!.ville} .".toUpperCase()),
+                  Listilinfo("Adresse".tr,
                       "${widget.cart.client!.adress} .".toUpperCase()),
-                  Listilinfo("Email", "${widget.cart.client!.email} ."),
-                  Listilinfo("Quartier", "${widget.cart.client!.quartier} ."),
+                  Listilinfo("Email".tr, "${widget.cart.client!.email} ."),
+                  Listilinfo("Quartier".tr, "${widget.cart.client!.quartier} ."),
                   Divider(
                     height: 2,
                     thickness: 2,
@@ -120,21 +120,21 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
                     height: Get.height * 0.01,
                   ),
                   Text(
-                    "Info de la carte.",
+                    "Info de la carte.".tr,
                     style: StyleText.copyWith(fontSize: fontsizes),
                   ),
                   ListTile(
-                    title: Text("Montant: ${widget.cart.amount} XOF"),
-                    subtitle: Text("Numéro: ${widget.cart.code}"),
+                    title: Text(" ${"Montant:".tr} ${widget.cart.amount} XOF"),
+                    subtitle: Text("${"Numéro:".tr} ${widget.cart.code}"),
                     trailing: Text(
-                        widget.cart.status == 1 ? "Activé" : "Désactivé",
+                        widget.cart.status == 1 ? "Activée".tr : "Désactivée".tr,
                         style: TextStyle(
                             color: widget.cart.status == 1
                                 ? Colors.green
                                 : Colors.red)),
                   ),
                   ListTile(
-                    title: Text("Date: ${widget.cart.created}"),
+                    title: Text("${"Date:".tr} ${widget.cart.created}"),
                     trailing: IconButton(
                         onPressed: () async {
                           await controller.ActivDesactiveCart(widget.cart.code);
@@ -176,7 +176,7 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
                           }))
                   : Center(
                       child: Text(
-                      "Aucune transaction n'à été effectuer avec cette carte.",
+                      "Aucune transaction n'à été effectuer avec cette carte.".tr,
                       textAlign: TextAlign.center,
                     )),
             ]),

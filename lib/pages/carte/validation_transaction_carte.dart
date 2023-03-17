@@ -50,7 +50,7 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
     return Scaffold(
       drawer: DrawCostum(),
       appBar: AppBar(
-        title: Text("Valider la transaction"),
+        title: Text("Valider la transaction".tr),
       ),
       bottomSheet: Container(
           height: Get.height * 0.11,
@@ -69,7 +69,7 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                         if (chek == true) {
                           Get.to(() => CarteList());
                           Toas.getSnackbarsucess(
-                              appName, "La carte à éte bien débiter");
+                              appName, "La carte à éte bien débiter".tr);
                           controller.getcartcompany();
                         }
                       }
@@ -79,7 +79,7 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                       color: Colors.white,
                     ),
                     label: Text(
-                      "Valider",
+                      "Valider".tr,
                       style: StyleText.copyWith(color: Colors.white),
                     ))),
           )),
@@ -98,11 +98,11 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                         keyboardType: TextInputType.number,
                         controller: _controllercode,
                         validator: (value) => value!.isEmpty
-                            ? "Veuillez entrer le code de la transaction"
+                            ? "Veuillez entrer le code de la transaction".tr
                             : null,
                         decoration: InputDecoration(
                             label:
-                                Text("Entrer le numéro  ou scanner le ticket"),
+                                Text("Entrer le numéro  ou scanner le ticket".tr),
                             focusedBorder: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(5.0),
                               borderSide: BorderSide(
@@ -115,7 +115,7 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                                 color: AppColors.mainColor,
                               ),
                             ),
-                            hintText: "Le numéro du ticket",
+                            hintText: "Le numéro du ticket".tr,
                             isDense: true,
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(5))),
@@ -152,7 +152,7 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                       SizedBox(
                         height: Get.height * 0.03,
                       ),
-                      Text("Cliquez ici pour Scanner le ticket.")
+                      Text("Cliquez ici pour Scanner le ticket.".tr)
                     ],
                   ))
             ],

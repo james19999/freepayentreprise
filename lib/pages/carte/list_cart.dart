@@ -3,15 +3,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:freepayagency/pages/carte/create_cart.dart';
 import 'package:freepayagency/pages/carte/widget_cart.dart';
-import 'package:freepayagency/pages/clients/add_client.dart';
-import 'package:freepayagency/pages/clients/client_card.dart';
 import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/carte_controller.dart';
-import 'package:freepayagency/pages/controller/client_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
-import 'package:freepayagency/pages/models/client_model.dart';
-import 'package:freepayagency/pages/models/transaction.dart';
-import 'package:freepayagency/pages/services/client_service.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
 
@@ -84,7 +78,7 @@ class _CarteListState extends ConsumerState<CarteList> {
                         color: AppColors.mainColor,
                       ),
                     ),
-                    hintText: "Entrer le nom du client .",
+                    hintText: "Entrer le nom du client.".tr,
                     isDense: true,
                     suffixIcon: Icon(
                       Icons.search,
@@ -102,10 +96,10 @@ class _CarteListState extends ConsumerState<CarteList> {
                       controller.filteredTempCropList.isEmpty
                   ? Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(10.0),
+                        padding:  EdgeInsets.all(10.0),
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children:  [
                             Padding(
                               padding: EdgeInsets.all(8.0),
                               child: Icon(
@@ -117,7 +111,7 @@ class _CarteListState extends ConsumerState<CarteList> {
                               padding: EdgeInsets.all(5.0),
                               child: Center(
                                 child: Text(
-                                  'Aucun résultat pour votre recherche',
+                                  'Aucun résultat pour votre recherche'.tr,
                                   style: TextStyle(
                                       fontSize: fontsizes,
                                       fontWeight: FontWeight.normal),
@@ -163,7 +157,7 @@ class _CarteListState extends ConsumerState<CarteList> {
                               SizedBox(
                                 height: Get.height * 0.01,
                               ),
-                              Text("Vous n' avez pas de cartes pour l'instant.")
+                              Text("Vous n'avez pas de cartes pour l'instant.".tr)
                             ],
                           ),
                         ),
