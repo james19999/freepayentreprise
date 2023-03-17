@@ -15,7 +15,6 @@ import 'package:freepayagency/pages/ecommer/slider/slider_list.dart';
 import 'package:freepayagency/pages/helper/images.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/home/home.dart';
-import 'package:freepayagency/pages/login/login.dart';
 import 'package:freepayagency/pages/settings/setting_account.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
@@ -65,7 +64,7 @@ Drawer DrawCostum() {
         //   onTap: () {},
         // ),
         ListTileCustom(
-            "Dashboard".tr, Icons.dashboard, Icons.arrow_forward_ios, StyleText,
+            "Tableau de bord".tr, Icons.dashboard, Icons.arrow_forward_ios, StyleText,
             () {
           Get.back(closeOverlays: false);
           Get.to(() => Home(), transition: Transition.leftToRight);
@@ -279,6 +278,11 @@ Drawer DrawCostum() {
                       child: Card(
                         elevation: 0,
                         child: ListTile(
+                          onTap: () {
+                            Get.updateLocale(Locale('fr', 'FR'));
+                            Get.back();
+
+                          },
                           title: Text("Français".tr),
                           trailing: Image.asset(
                             fr,
@@ -287,11 +291,16 @@ Drawer DrawCostum() {
                         ),
                       ),
                     ),
+
                     Container(
                       width: Get.width * 0.6,
                       child: Card(
                         elevation: 0,
                         child: ListTile(
+                          onTap: () {
+                            Get.updateLocale(Locale('en', 'US'));
+                            Get.back();
+                          },
                           title: Text("Anglais".tr),
                           trailing: Image.asset(
                             en,
@@ -300,6 +309,7 @@ Drawer DrawCostum() {
                         ),
                       ),
                     )
+
                   ],
                 ),
                 backgroundColor: Colors.transparent,

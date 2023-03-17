@@ -45,7 +45,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
 
   List<dynamic> compte = [
     {
-      "name": 'Modifier mon compte',
+      "name": 'Modifier votre compte'.tr,
       "icon": Icon(CupertinoIcons.pencil),
       "path": Icon(
         size: 18,
@@ -54,7 +54,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
       ),
     },
     {
-      "name": 'Modifier le mot de passe',
+      "name": 'Modifier le mot de passe'.tr,
       "icon": Icon(CupertinoIcons.lock),
       "path": Icon(
         size: 18,
@@ -63,7 +63,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
       )
     },
     {
-      "name": 'Notifications',
+      "name": 'Notifications'.tr,
       "icon": Icon(Icons.notifications),
       "path": IconButton(
         onPressed: () {},
@@ -72,7 +72,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
       ),
     },
     {
-      "name": 'Langue',
+      "name": 'Langue'.tr,
       "icon": Icon(Icons.translate_outlined),
       "path": Icon(
         size: 18,
@@ -92,7 +92,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
           drawer: DrawCostum(),
           appBar: AppBar(
             centerTitle: true,
-            title: Text("Paramètre du compte", style: StyleText),
+            title: Text("Paramètre du compte".tr, style: StyleText),
             elevation: 0,
             backgroundColor: AppColors.mainColor,
             actions: [
@@ -101,9 +101,9 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                     var check = await UserService.upadatecompanyimage(image!);
                     if (check == true) {
                       Toas.getSnackbarsucess(
-                          appName, "Image du profil mise à jour");
+                          appName, "Image du profil mise à jour".tr);
                     } else {
-                      Toas.getSnackbarEror(appName, "Erreur ");
+                      Toas.getSnackbarEror(appName, "Erreur".tr);
                     }
                   },
                   icon: Icon(Icons.save))
@@ -211,7 +211,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Expanded(child: Text("Montant total des  cartes: ${controllers.globalTotal} XOF ")),
+                      Expanded(child: Text("${"Montant total des  cartes:".tr}  ${controllers.globalTotal} XOF ")),
                     ],
                   ),
                 ),
@@ -219,7 +219,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Expanded(child: Text("Montant restant sur les  cartes: ${controller.amounts} XOF ")),
+                      Expanded(child: Text(" ${"Montant restant sur les  cartes:".tr}  ${controller.amounts} XOF ")),
                     ],
                   ),
                 ),

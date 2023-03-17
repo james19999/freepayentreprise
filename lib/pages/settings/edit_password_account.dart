@@ -34,10 +34,10 @@ class EditPasswordAccount extends ConsumerWidget {
                           if (chek == true) {
                             Get.offAll(() => Login());
                             Toas.getSnackbarsucess(
-                                appName, "Le mot de passe à été bien modifier");
+                                appName, "Le mot de passe à été bien modifier".tr);
                           } else {
                             Toas.getSnackbarEror(appName,
-                                "Erreur de modification du mot de passe");
+                                "Erreur de modification du mot de passe".tr);
                           }
                         }
                       },
@@ -55,7 +55,7 @@ class EditPasswordAccount extends ConsumerWidget {
         ),
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Modifier le mot de passe", style: StyleText),
+          title: Text("Modifier le mot de passe".tr, style: StyleText),
           elevation: 0,
           backgroundColor: AppColors.mainColor,
         ),
@@ -101,7 +101,7 @@ class EditPasswordAccount extends ConsumerWidget {
                                 TextFormField(
                                   controller: _newpassword,
                                   validator: (value) => value!.isEmpty
-                                      ? "Entrer le nouveau mot de passe"
+                                      ? "Entrer le nouveau mot de passe".tr
                                       : null,
                                   decoration: InputDecoration(
                                       label: Text("Nouveau mot de passe".tr),

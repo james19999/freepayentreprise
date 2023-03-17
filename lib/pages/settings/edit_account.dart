@@ -1,11 +1,8 @@
 import 'dart:io';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:freepayagency/pages/color/color.dart';
-import 'package:freepayagency/pages/drawer/drawercostem.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/services/user_service.dart';
 import 'package:freepayagency/pages/settings/setting_account.dart';
@@ -94,10 +91,10 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
 
                           if (check == true) {
                             Toas.getSnackbarsucess(
-                                appName, "Votre Compte à été bien  modifier. ");
+                                appName, "Votre Compte à été bien  modifier.".tr);
                             Get.off(() => SettingAccount());
                           } else {
-                            Toas.getSnackbarEror(appName, "Erreur ");
+                            Toas.getSnackbarEror(appName, "Erreur".tr);
                           }
                         }
                       },
@@ -115,7 +112,7 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
         ),
         appBar: AppBar(
           centerTitle: true,
-          title: Text("Modifier mon compte", style: StyleText),
+          title: Text("Modifier votre compte".tr, style: StyleText),
           elevation: 0,
           backgroundColor: AppColors.mainColor,
         ),
@@ -151,7 +148,7 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                 SizedBox(height: Get.height * 0.01),
               ])),
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding:  EdgeInsets.all(8.0),
                 child: Container(
                   child: Form(
                       key: _formk,
@@ -162,10 +159,10 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.text,
                             // controller: _amount,
                             validator: (value) => value!.isEmpty
-                                ? "Le nom de votre entreprise"
+                                ? "Le nom de votre entreprise".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Nom de l'entreprise"),
+                                label: Text("Nom de l'entreprise".tr),
                                 suffixIcon: Icon(Icons.home),
                                 isDense: true,
                                 filled: true,
@@ -189,9 +186,9 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.text,
                             controller: _controlleradresse,
                             validator: (value) =>
-                                value!.isEmpty ? "Adresse" : null,
+                                value!.isEmpty ? "Adresse".tr : null,
                             decoration: InputDecoration(
-                                label: Text("Adresse de l'entreprise"),
+                                label: Text("Adresse de l'entreprise".tr),
                                 suffixIcon: Icon(Icons.location_city),
                                 isDense: true,
                                 filled: true,
@@ -219,8 +216,8 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             // validator: (value) =>
                             //     value!.isEmpty ? "Raison sociale" : null,
                             decoration: InputDecoration(
-                                hintText: "Optionnel",
-                                label: Text("Raison sociale"),
+                                hintText: "Optionnel".tr,
+                                label: Text("Raison sociale".tr),
                                 suffixIcon: Icon(Icons.block_flipped),
                                 isDense: true,
                                 filled: true,
@@ -245,9 +242,9 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.text,
                             controller: _controllerquartier,
                             validator: (value) =>
-                                value!.isEmpty ? "Quartier" : null,
+                                value!.isEmpty ? "Quartier".tr : null,
                             decoration: InputDecoration(
-                                label: Text("Quartier"),
+                                label: Text("Quartier".tr),
                                 suffixIcon: Icon(Icons.home),
                                 isDense: true,
                                 filled: true,
@@ -273,9 +270,9 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.emailAddress,
                             controller: _controlleremail,
                             validator: (value) =>
-                                value!.isEmpty ? "Email" : null,
+                                value!.isEmpty ? "Email".tr : null,
                             decoration: InputDecoration(
-                                label: Text("Email"),
+                                label: Text("Email".tr),
                                 suffixIcon: Icon(Icons.mail),
                                 isDense: true,
                                 filled: true,
@@ -298,13 +295,13 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                           ),
                           IntlPhoneField(
                             initialCountryCode: 'TG',
-                            searchText: "Rechercher votre pays",
+                            searchText: "Rechercher votre pays".tr,
                             invalidNumberMessage:
-                                "Numéro de téléphone invalide",
+                                "Numéro de téléphone invalide".tr,
                             decoration: InputDecoration(
                               isDense: true,
                               filled: true,
-                              hintText: "Numéro de téléphone",
+                              hintText: "Numéro de téléphone".tr,
                               border: OutlineInputBorder(
                                 borderSide: BorderSide(),
                               ),
@@ -328,9 +325,9 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.text,
                             controller: _controllerpassword,
                             validator: (value) =>
-                                value!.isEmpty ? "Mot de passe" : null,
+                                value!.isEmpty ? "Mot de passe".tr : null,
                             decoration: InputDecoration(
-                                label: Text("Choisissez un  Mot de passe"),
+                                label: Text("Choisissez un  Mot de passe".tr),
                                 suffixIcon: IconButton(
                                     onPressed: () {
                                       ref.watch(_obscur.notifier).state =
@@ -367,10 +364,10 @@ class _CompteEditState extends ConsumerState<CompteEdit> {
                             keyboardType: TextInputType.multiline,
                             controller: _controllerdescription,
                             validator: (value) => value!.isEmpty
-                                ? "Une petite description de votre entreprise"
+                                ? "Une petite description de votre entreprise".tr
                                 : null,
                             decoration: InputDecoration(
-                                label: Text("Une petite description "),
+                                label: Text("Une petite description".tr),
                                 suffixIcon: Icon(Icons.description_outlined),
                                 isDense: true,
                                 filled: true,
