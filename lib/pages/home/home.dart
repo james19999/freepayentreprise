@@ -13,6 +13,7 @@ import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/history/history_list.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
 
 class Home extends ConsumerStatefulWidget {
@@ -261,7 +262,7 @@ class _HomeState extends ConsumerState<Home> {
                                         endIndent: 9,
                                       ),
                                       Text(
-                                        "${controller.todayTotal ?? ""} XOF",
+                                        "${NumberFormat.decimalPattern().format(controller.todayTotal)?? ""} XOF",
                                         style: StyleText.copyWith(
                                             color: Colors.white),
                                       ),
@@ -303,7 +304,7 @@ class _HomeState extends ConsumerState<Home> {
                                         indent: 9,
                                         endIndent: 9,
                                       ),
-                                      Text(  "${controller.weekTotal ?? ""} XOF",
+                                      Text(  "${NumberFormat.decimalPattern().format(controller.weekTotal)?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
                                               fontSize: 15,)),
@@ -345,7 +346,7 @@ class _HomeState extends ConsumerState<Home> {
                                         indent: 9,
                                         endIndent: 9,
                                       ),
-                                      Text("${controller.mounthTotal ?? ""} XOF",
+                                      Text("${NumberFormat.decimalPattern().format(controller.mounthTotal)?? ""} XOF",
                                           style: StyleText.copyWith(
                                               color: Colors.white,
                                               fontSize: 15,)),
@@ -375,7 +376,7 @@ class _HomeState extends ConsumerState<Home> {
                      itemCount: controller.Historyday.length,
                     itemBuilder: (context, index) {
                       return ListTile(title:
-                       Text("${controller.Historyday[index].amount} XOF"),
+                       Text("${NumberFormat.decimalPattern().format(int.parse(controller.Historyday[index].amount))}XOF"),
                        subtitle: Text("${controller.Historyday[index].cartNumber}"),
                        trailing: Text(DateConverter.formatDate(controller.Historyday[index].createdAt)),
                        

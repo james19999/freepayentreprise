@@ -83,43 +83,26 @@ Drawer DrawCostum() {
           height: 1,
           thickness: 1,
         ),
-        ExpansionTile(
-          trailing: Icon(
-            Icons.keyboard_arrow_down_outlined,
-            size: 40,
-            color: Colors.grey,
-          ),
-          leading: Icon(
-            Icons.credit_card_rounded,
-            color: AppColors.mainColor,
-          ),
-          title: Text(
-            "Free Pay",
-            style: StyleText.copyWith(fontSize: 14),
-          ),
-          children: [
-            Column(
-              children: [
-                ListTileCustom(
-                    "Free Pay Carte".tr,
-                    Icons.card_giftcard,
-                    Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+            ListTileCustom(
+                "Free Pay Carte".tr,
+                Icons.card_giftcard,
+                Icons.arrow_forward_ios,
+                StyleText.copyWith(fontSize: 14), () {
+              Get.back(closeOverlays: false);
 
-                  Get.to(() => CarteList(), transition: Transition.leftToRight);
-                }),
+              Get.to(() => CarteList(), transition: Transition.leftToRight);
+            }),
                 Divider(
                   height: 1,
                   thickness: 1,
                 ),
-                ListTileCustom("Crédité".tr, Icons.money, Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+              ListTileCustom("Crédité".tr, Icons.money, Icons.arrow_forward_ios,
+                  StyleText.copyWith(fontSize: 14), () {
+                Get.back(closeOverlays: false);
 
-                  Get.to(() => CreditCart(),
-                      transition: Transition.leftToRight);
-                }),
+                Get.to(() => CreditCart(),
+                    transition: Transition.leftToRight);
+              }),
                 Divider(
                   height: 1,
                   thickness: 1,
@@ -148,113 +131,109 @@ Drawer DrawCostum() {
                   Get.to(() => ValidationTransaction(),
                       transition: Transition.leftToRight);
                 }),
-              ],
-            )
-          ],
-        ),
 
         Divider(
           height: 1,
           thickness: 1,
         ),
 
-        ExpansionTile(
-          leading: Icon(
-            Icons.shopping_basket_outlined,
-            color: AppColors.mainColor,
-          ),
-          trailing: Icon(
-            Icons.keyboard_arrow_down_outlined,
-            size: 40,
-            color: Colors.grey,
-          ),
-          title: Text(
-            "E-Commerce".tr,
-            style: StyleText.copyWith(fontSize: 14),
-          ),
-          children: [
-            Column(
-              children: [
-                ListTileCustom(
-                    "Produits".tr,
-                    Icons.production_quantity_limits,
-                    Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        // ExpansionTile(
+        //   leading: Icon(
+        //     Icons.shopping_basket_outlined,
+        //     color: AppColors.mainColor,
+        //   ),
+        //   trailing: Icon(
+        //     Icons.keyboard_arrow_down_outlined,
+        //     size: 40,
+        //     color: Colors.grey,
+        //   ),
+        //   title: Text(
+        //     "E-Commerce".tr,
+        //     style: StyleText.copyWith(fontSize: 14),
+        //   ),
+        //   children: [
+        //     Column(
+        //       children: [
+        //         ListTileCustom(
+        //             "Produits".tr,
+        //             Icons.production_quantity_limits,
+        //             Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => ProductList(),
-                      transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-                ListTileCustom("Catégories".tr, Icons.tag, Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        //           Get.to(() => ProductList(),
+        //               transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //         ListTileCustom("Catégories".tr, Icons.tag, Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => CategoryList(),
-                      transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-                ListTileCustom(
-                    "Commandes".tr,
-                    Icons.business_center,
-                    Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        //           Get.to(() => CategoryList(),
+        //               transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //         ListTileCustom(
+        //             "Commandes".tr,
+        //             Icons.business_center,
+        //             Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => CommandeList(),
-                      transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-                ListTileCustom("Slider".tr, Icons.image, Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        //           Get.to(() => CommandeList(),
+        //               transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //         ListTileCustom("Slider".tr, Icons.image, Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => SlideList(), transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-                ListTileCustom(
-                    "Promotions/produits".tr,
-                    Icons.campaign,
-                    Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        //           Get.to(() => SlideList(), transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //         ListTileCustom(
+        //             "Promotions/produits".tr,
+        //             Icons.campaign,
+        //             Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => PromotionList(),
-                      transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-                ListTileCustom(
-                    "Produits en avant".tr,
-                    Icons.propane_outlined,
-                    Icons.arrow_forward_ios,
-                    StyleText.copyWith(fontSize: 14), () {
-                  Get.back(closeOverlays: false);
+        //           Get.to(() => PromotionList(),
+        //               transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //         ListTileCustom(
+        //             "Produits en avant".tr,
+        //             Icons.propane_outlined,
+        //             Icons.arrow_forward_ios,
+        //             StyleText.copyWith(fontSize: 14), () {
+        //           Get.back(closeOverlays: false);
 
-                  Get.to(() => PubList(), transition: Transition.leftToRight);
-                }),
-                Divider(
-                  height: 0,
-                  thickness: 1,
-                ),
-              ],
-            )
-          ],
-        ),
+        //           Get.to(() => PubList(), transition: Transition.leftToRight);
+        //         }),
+        //         Divider(
+        //           height: 0,
+        //           thickness: 1,
+        //         ),
+        //       ],
+        //     )
+        //   ],
+        // ),
 
         ListTileCustom("Paramètre du compte".tr, Icons.settings,
             Icons.arrow_forward_ios, StyleText.copyWith(fontSize: 14), () {

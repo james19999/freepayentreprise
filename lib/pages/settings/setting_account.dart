@@ -11,6 +11,7 @@ import 'package:freepayagency/pages/color/color.dart';
 import 'package:freepayagency/pages/controller/carte_controller.dart';
 import 'package:freepayagency/pages/controller/history_controller.dart';
 import 'package:freepayagency/pages/drawer/drawercostem.dart';
+import 'package:freepayagency/pages/helper/images.dart';
 import 'package:freepayagency/pages/helper/local_storage.dart';
 import 'package:freepayagency/pages/services/user_service.dart';
 import 'package:freepayagency/pages/settings/edit_account.dart';
@@ -20,6 +21,7 @@ import 'package:freepayagency/pages/toas/toas.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:intl/intl.dart';
 
 class SettingAccount extends ConsumerStatefulWidget {
   const SettingAccount({super.key});
@@ -45,7 +47,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
 
   List<dynamic> compte = [
     {
-      "name": 'Modifier votre compte'.tr,
+      "name": "Modifier votre compte".tr,
       "icon": Icon(CupertinoIcons.pencil),
       "path": Icon(
         size: 18,
@@ -54,7 +56,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
       ),
     },
     {
-      "name": 'Modifier le mot de passe'.tr,
+      "name": "Modifier le mot de passe".tr,
       "icon": Icon(CupertinoIcons.lock),
       "path": Icon(
         size: 18,
@@ -63,7 +65,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
       )
     },
     {
-      "name": 'Notifications'.tr,
+      "name": "Notifications".tr,
       "icon": Icon(Icons.notifications),
       "path": IconButton(
         onPressed: () {},
@@ -187,7 +189,59 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                                       } else if (index == 1) {
                                         Get.to(() => EditPasswordAccount(),
                                             transition: Transition.leftToRight);
-                                      } else if (index == 2) {}
+                                      } else if (index == 2) {
+                                         Toas.message(context, "Action indisponible".tr);
+                                      } else if(index==3){
+                                                Get.showSnackbar(GetSnackBar(
+                title: "",
+                message: "",
+                messageText: Column(
+                  children: [
+                    Container(
+                      width: Get.width * 0.6,
+                      child: Card(
+                        elevation: 0,
+                        child: ListTile(
+                          onTap: () {
+                            Get.updateLocale(Locale('fr', 'FR'));
+                            Get.back();
+
+                          },
+                          title: Text("Français".tr),
+                          trailing: Image.asset(
+                            fr,
+                            width: 50,
+                          ),
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      width: Get.width * 0.6,
+                      child: Card(
+                        elevation: 0,
+                        child: ListTile(
+                          onTap: () {
+                            Get.updateLocale(Locale('en', 'US'));
+                            Get.back();
+                          },
+                          title: Text("Anglais".tr),
+                          trailing: Image.asset(
+                            en,
+                            width: 50,
+                          ),
+                        ),
+                      ),
+                    )
+
+                  ],
+                ),
+                backgroundColor: Colors.transparent,
+                onTap: (snack) {
+                  Get.back();
+                },
+              ));
+                                      }
                                     },
                                     title: Text(
                                       cpt['name'],
@@ -211,7 +265,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Expanded(child: Text("${"Montant total des  cartes:".tr}  ${controllers.globalTotal} XOF ")),
+                      Expanded(child: Text("${"Montant total des  cartes:".tr}  ${NumberFormat.decimalPattern().format(controllers.globalTotal)} XOF ")),
                     ],
                   ),
                 ),
@@ -219,7 +273,7 @@ class _SettingAccountState extends ConsumerState<SettingAccount> {
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
                     children: [
-                      Expanded(child: Text(" ${"Montant restant sur les  cartes:".tr}  ${controller.amounts} XOF ")),
+                      Expanded(child: Text(" ${"Montant restant sur les  cartes:".tr}  ${NumberFormat.decimalPattern().format( controller.amounts)} XOF ")),
                     ],
                   ),
                 ),

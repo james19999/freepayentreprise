@@ -6,7 +6,7 @@ import 'package:freepayagency/pages/models/cart_client.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
 import 'package:zoom_tap_animation/zoom_tap_animation.dart';
-
+import 'package:intl/intl.dart';
 class CartCard extends ConsumerWidget {
   final Cart cart;
   const CartCard({super.key, required this.cart});
@@ -25,7 +25,7 @@ class CartCard extends ConsumerWidget {
             color: Colors.white,
             elevation: 3,
             child: Container(
-              height: Get.height * 0.23,
+              height: Get.height * 0.22,
               child: Column(
                 children: [
                   Padding(
@@ -63,14 +63,18 @@ class CartCard extends ConsumerWidget {
                           ),
                           maxLines: 2,
                         ),
-                        Text(
-                          "${cart.amount} XOF",
-                          style: StyleText.copyWith(
-                            color: AppColors.mainColor,
-                            letterSpacing: 3.0,
-                            overflow: TextOverflow.ellipsis,
+                        Container(
+                          width: Get.width *0.4,
+                          height: Get.height *0.04,
+                          child: Text(
+                            "${NumberFormat.decimalPattern().format(int.parse(cart.amount))} XOF",
+                            style: StyleText.copyWith(
+                              color: AppColors.mainColor,
+                              letterSpacing: 3.0,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            maxLines: 2,
                           ),
-                          maxLines: 2,
                         ),
                       ],
                     ),
@@ -91,7 +95,7 @@ class CartCard extends ConsumerWidget {
                               fontSize: fontsizes,
                               overflow: TextOverflow.ellipsis,
                             ),
-                            maxLines: 2,
+                            maxLines: 1,
                           ),
                         ),
                         Text(

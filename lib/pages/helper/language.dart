@@ -139,9 +139,16 @@ class Languages extends Translations {
            "Montant total des  cartes:":"Montant total des  cartes:",
            "Image du profil mise à jour":"Image du profil mise à jour",
            "Notifications":"Notifications",
-           "Tableau de bord":"Tableau de bord"
+           "Tableau de bord":"Tableau de bord",
+            "Montant:":"Montant:",
+            "Numéro:":"Numéro:",
+            
+            
+
         },
         'en_US': {
+          "Numéro:":"Number:",
+           "Montant:":"Amount:",
           "Tableau de bord":"Dashboard",
           "Notifications":"Notifications",
           "Image du profil mise à jour":"Updated profile picture",

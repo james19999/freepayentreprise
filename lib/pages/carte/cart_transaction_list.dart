@@ -12,6 +12,7 @@ import 'package:freepayagency/pages/services/transaction_service.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:freepayagency/pages/urls/baseurl.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class Transactionlist extends ConsumerStatefulWidget {
   final Cart cart;
@@ -124,7 +125,7 @@ class _TransactionlistState extends ConsumerState<Transactionlist> {
                     style: StyleText.copyWith(fontSize: fontsizes),
                   ),
                   ListTile(
-                    title: Text(" ${"Montant:".tr} ${widget.cart.amount} XOF"),
+                    title: Text("${"Montant:".tr} ${NumberFormat.decimalPattern().format(int.parse(widget.cart.amount))} XOF"),
                     subtitle: Text("${"Numéro:".tr} ${widget.cart.code}"),
                     trailing: Text(
                         widget.cart.status == 1 ? "Activée".tr : "Désactivée".tr,

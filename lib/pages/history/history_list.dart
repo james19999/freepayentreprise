@@ -5,6 +5,7 @@ import 'package:freepayagency/pages/controller/history_controller.dart';
 import 'package:freepayagency/pages/helper/date_convert.dart';
 import 'package:freepayagency/pages/styles/style.dart';
 import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
 class HistoryTransfert extends ConsumerStatefulWidget {
   const HistoryTransfert({super.key});
@@ -58,7 +59,7 @@ class _HistoryTransfertState extends ConsumerState<HistoryTransfert> {
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0), child: 
                         ListTile(title:
-                       Text("${controller.Historyday[index].amount} XOF"),
+                       Text("${NumberFormat.decimalPattern().format(int.parse(controller.Historyday[index].amount))} XOF"),
                        subtitle: Text("${controller.Historyday[index].cartNumber}"),
                        trailing: Text(DateConverter.formatDate(controller.Historyday[index].createdAt)),
                        
@@ -74,7 +75,7 @@ class _HistoryTransfertState extends ConsumerState<HistoryTransfert> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0), child:  ListTile(title:
-                       Text("${controller.Historyweek[index].amount} XOF"),
+                       Text("${NumberFormat.decimalPattern().format(int.parse(controller.Historyweek[index].amount))} XOF"),
                        subtitle: Text("${controller.Historyweek[index].cartNumber}"),
                        trailing: Text(DateConverter.formatDate(controller.Historyweek[index].createdAt)),
                        
@@ -89,7 +90,7 @@ class _HistoryTransfertState extends ConsumerState<HistoryTransfert> {
                   shrinkWrap: true,
                   itemBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.all(10.0), child:  ListTile(title:
-                       Text("${controller.HistoryMounth[index].amount} XOF"),
+                       Text("${NumberFormat.decimalPattern().format(int.parse(controller.HistoryMounth[index].amount))} XOF"),
                        subtitle: Text("${controller.HistoryMounth[index].cartNumber}"),
                        trailing: Text(DateConverter.formatDate(controller.HistoryMounth[index].createdAt)),
                        
