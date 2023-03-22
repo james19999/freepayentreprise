@@ -25,7 +25,7 @@ class _CreditCartState extends ConsumerState<CreditCart> {
   TextEditingController _controlleramount = TextEditingController();
   TextEditingController _controllercode = TextEditingController();
   String? _scanBarcode;
-
+   bool isloade=false;
   Future<void> scanQR() async {
     String barcodeScanRes;
 
@@ -67,6 +67,9 @@ class _CreditCartState extends ConsumerState<CreditCart> {
                 child: TextButton.icon(
                     onPressed: () async {
                       if (_formk.currentState!.validate()) {
+                          setState(() {
+                            isloade=true;
+                          });
                         var chek = await controller.CrediteCarte(
                             _controlleramount.text, _controllercode.text);
                         if (chek == true) {
@@ -75,6 +78,10 @@ class _CreditCartState extends ConsumerState<CreditCart> {
                               appName, "La carte à éte bien créditer".tr);
                           controller.getcartcompany();
                           controllers.getallhistoryMethode();
+                        }else{
+                           setState(() {
+                            isloade=false;
+                          });
                         }
                       }
                     },
@@ -82,10 +89,11 @@ class _CreditCartState extends ConsumerState<CreditCart> {
                       Icons.check,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label: isloade==false?
+                    Text(
                       "Valider".tr,
                       style: StyleText.copyWith(color: Colors.white),
-                    ))),
+                    ) :CircularProgressIndicator(color: Colors.white,strokeWidth: 1.5,))),
           )),
       body: SafeArea(
           child: SingleChildScrollView(

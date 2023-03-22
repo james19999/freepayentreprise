@@ -161,19 +161,22 @@ class _LoginState extends ConsumerState<Login> {
                                   child: TextButton.icon(
                                       onPressed: () async {
                                         if (_forme.currentState!.validate()) {
+                                            setState(() {
+                                              isloade = true;
+                                            });
                                           var cheked =
                                               await controller.AuthConstumer(
                                                   emailController.text,
                                                   passwordController.text);
                                           if (cheked == true) {
-                                            setState(() {
-                                              isloade = true;
-                                            });
                                             Get.offAll(() => SplashHome(),
                                                 transition: Transition.fade);
                                           } else {
                                             Toas.getSnackbarEror(appName,
                                                 "Erreur de connexion vérifier vos informations".tr);
+                                                setState(() {
+                                                  isloade=false;
+                                                });
                                           }
                                         }
                                       },
@@ -188,7 +191,7 @@ class _LoginState extends ConsumerState<Login> {
                                                   color: Colors.white),
                                             )
                                           : CircularProgressIndicator.adaptive(
-                                              strokeWidth: 2,
+                                              strokeWidth: 1.5,
                                               backgroundColor: Colors.white,
                                             )),
                                 ),

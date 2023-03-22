@@ -13,8 +13,7 @@ class CodeInput extends ConsumerWidget {
    CodeInput({super.key});
   GlobalKey<FormState> _forme = GlobalKey<FormState>();
   TextEditingController codeController = TextEditingController();
-
-
+    final isloade =StateProvider((ref) => false);
   @override
   Widget build(BuildContext context, WidgetRef ref) {
      final controller =ref.watch(PasswordProvider);
@@ -90,6 +89,7 @@ class CodeInput extends ConsumerWidget {
                                     child: TextButton.icon(
                                         onPressed: () async {
                                           if (_forme.currentState!.validate()) {
+                                             ref.watch(isloade.notifier).state=true;
                                             var cheked =
                                                 await controller.validatecode(
                                                   codeController.text,
@@ -99,6 +99,7 @@ class CodeInput extends ConsumerWidget {
                                             } else {
                                               Toas.getSnackbarEror(appName,
                                                   "Code invalid".tr);
+                                               ref.watch(isloade.notifier).state=false;   
                                             }
                                           }
                                         },
@@ -107,11 +108,12 @@ class CodeInput extends ConsumerWidget {
                                           color: Colors.white,
                                         ),
                                         label:
+                                          ref.watch(isloade)==false?
                                              Text(
                                                 "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
-                                              )
+                                        ):CircularProgressIndicator(color: Colors.white,strokeWidth: 1.5,)
                                     ),
                                   ),             
              ],),

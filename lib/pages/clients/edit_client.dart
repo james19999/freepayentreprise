@@ -29,6 +29,8 @@ class _EditClientState extends ConsumerState<EditClient> {
   TextEditingController _controlleridentifiant = TextEditingController();
   TextEditingController _controller = TextEditingController();
   var _controllerphone;
+   bool isloade=false;
+
   @override
   void initState() {
     // TODO: implement initState
@@ -64,6 +66,9 @@ class _EditClientState extends ConsumerState<EditClient> {
                   child: TextButton.icon(
                       onPressed: () async {
                         if (_formk.currentState!.validate()) {
+                          setState(() {
+                            isloade=true;
+                          });
                           var client = ClientModel(
                             name: _controllername.text,
                             adress: _controlleradresse.text,
@@ -82,16 +87,22 @@ class _EditClientState extends ConsumerState<EditClient> {
                                 transition: Transition.fade);
                             controller.getclients();
                           }
-                        } else {}
+                        } else {
+                          setState(() {
+                            isloade=false;
+                          });
+                        }
                       },
                       icon: Icon(
                         Icons.outbound_outlined,
                         color: Colors.white,
                       ),
-                      label: Text(
+                      label:
+                        isloade==false?
+                       Text(
                         "Enregistrer".tr,
                         style: StyleText.copyWith(color: Colors.white),
-                      ))),
+                      ):CircularProgressIndicator(color: Colors.white,strokeWidth: 1.5,))),
             )),
         body: Padding(
             padding: const EdgeInsets.all(10.0),

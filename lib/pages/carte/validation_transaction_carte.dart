@@ -24,7 +24,8 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
   GlobalKey<FormState> _formk = GlobalKey<FormState>();
   TextEditingController _controllercode = TextEditingController();
   String? _scanBarcode;
-
+   bool isloade=false;
+   
   Future<void> scanQR() async {
     String barcodeScanRes;
 
@@ -64,6 +65,9 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                 child: TextButton.icon(
                     onPressed: () async {
                       if (_formk.currentState!.validate()) {
+                          setState(() {
+                            isloade=true;
+                          });
                         var chek = await controller.Validationtransaction(
                             _controllercode.text);
                         if (chek == true) {
@@ -71,6 +75,8 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                           Toas.getSnackbarsucess(
                               appName, "La carte à éte bien débiter".tr);
                           controller.getcartcompany();
+                        }else{
+                          isloade=false;
                         }
                       }
                     },
@@ -78,10 +84,12 @@ class _ValidationTransactionState extends ConsumerState<ValidationTransaction> {
                       Icons.check,
                       color: Colors.white,
                     ),
-                    label: Text(
+                    label:
+                      isloade==false?
+                     Text(
                       "Valider".tr,
                       style: StyleText.copyWith(color: Colors.white),
-                    ))),
+                    ):CircularProgressIndicator(color: Colors.white,strokeWidth: 1.5,))),
           )),
       body: SafeArea(
           child: SingleChildScrollView(

@@ -17,7 +17,8 @@ class PasswordUpdate extends ConsumerWidget {
   GlobalKey<FormState> _forme = GlobalKey<FormState>();
    final  obscur = StateProvider((ref) => true);
    final  _obscur = StateProvider((ref) => true);
-  bool isloade = false;
+    final isloade =StateProvider((ref) => false);
+ 
   
   TextEditingController passwordController = TextEditingController();
   TextEditingController passconfirmController = TextEditingController();
@@ -166,7 +167,7 @@ class PasswordUpdate extends ConsumerWidget {
                                     child: TextButton.icon(
                                         onPressed: () async {
                                           if (_forme.currentState!.validate()) {
-
+                                                   ref.watch(isloade.notifier).state=true;
                                                if(passwordController.text ==passconfirmController.text){
                                                 var cheked =
                                                     await controller.updatepassword(
@@ -177,10 +178,13 @@ class PasswordUpdate extends ConsumerWidget {
                                                 } else {
                                                   Toas.getSnackbarEror(appName,
                                                       "Erreur de modification du mot de passe".tr);
+                                                   ref.watch(isloade.notifier).state=false;   
                                                 }
                                                }else{
                                                     Toas.getSnackbarEror(appName,
                                                       "Les mot de passe doivent être identique".tr);
+                                                   ref.watch(isloade.notifier).state=false;   
+
                                                }
                                           }
                                         },
@@ -189,11 +193,12 @@ class PasswordUpdate extends ConsumerWidget {
                                           color: Colors.white,
                                         ),
                                         label:
+                                            ref.watch(isloade)==false?
                                              Text(
                                                 "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
-                                              )
+                                              ):CircularProgressIndicator(color: Colors.white,strokeWidth: 1.5,)
                                     ),
                                   ),             
              ],),

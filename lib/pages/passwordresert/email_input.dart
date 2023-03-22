@@ -14,7 +14,8 @@ class Emailinput extends ConsumerWidget {
   GlobalKey<FormState> _forme = GlobalKey<FormState>();
   TextEditingController emailController = TextEditingController();
 
-
+    final isloade =StateProvider((ref) => false);
+    
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final controller =ref.watch(PasswordProvider);
@@ -90,6 +91,7 @@ class Emailinput extends ConsumerWidget {
                                     child: TextButton.icon(
                                         onPressed: () async {
                                           if (_forme.currentState!.validate()) {
+                                             ref.watch(isloade.notifier).state=true;
                                             var cheked =
                                                 await controller.sendmail(
                                                     emailController.text,
@@ -99,6 +101,7 @@ class Emailinput extends ConsumerWidget {
                                             } else {
                                               Toas.getSnackbarEror(appName,
                                                   "Erreur l'adresse mail n'existe pas.".tr);
+                                              ref.watch(isloade.notifier).state=false;    
                                             }
                                           }
                                         },
@@ -107,11 +110,12 @@ class Emailinput extends ConsumerWidget {
                                           color: Colors.white,
                                         ),
                                         label:
+                                           ref.watch(isloade)==false?
                                              Text(
                                                 "Envoyer".tr,
                                                 style: StyleText.copyWith(
                                                     color: Colors.white),
-                                              )
+                                              ):CircularProgressIndicator(strokeWidth: 1.5,color: Colors.white,)
                                     ),
                                   ),             
              ],),
