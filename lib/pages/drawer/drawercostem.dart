@@ -319,7 +319,7 @@ Drawer DrawCostum() {
           onTap: () async {
             Get.defaultDialog(
                 title: "Entreprise".tr,
-                middleText: 'Voulez-vous vraiment vous déconnectez'.tr,
+                middleText: 'Voulez-vous vraiment vous déconnecter'.tr,
                 textCancel: "Non".tr,
                 textConfirm: "Oui".tr,
                 confirmTextColor: Colors.white,
